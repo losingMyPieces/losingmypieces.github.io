@@ -19,29 +19,30 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.21.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="Linux crontab​crontab​ 是一个用于管理用户的定时任务调度工具。它允许用户设置在特定时间自动运行的命令或脚本，常用于定期执行备份、系统监控、数据处理等任务。 ‍ atd – 执行一次性命令的守护进程生活中，我们有太多场景需要使用到闹钟，比如早上 7 点起床，下午 4 点开会，晚上 8 点购物，等等。 在 Linux 系统里，我们同样也有类似的需求。比如我们想在凌晨 1 点将文件">
+    <meta name="description" content="​crontab​ 是一个用于管理用户的定时任务调度工具。它允许用户设置在特定时间自动运行的命令或脚本，常用于定期执行备份、系统监控、数据处理等任务。 atd – 执行一次性命令的守护进程生活中，我们有太多场景需要使用到闹钟，比如早上 7 点起床，下午 4 点开会，晚上 8 点购物，等等。 在 Linux 系统里，我们同样也有类似的需求。比如我们想在凌晨 1 点将文件上传服务器，或者在晚上 10">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux crontab">
-<meta property="og:url" content="http://example.com/2024/10/17/Linux%20crontab/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Linux crontab​crontab​ 是一个用于管理用户的定时任务调度工具。它允许用户设置在特定时间自动运行的命令或脚本，常用于定期执行备份、系统监控、数据处理等任务。 ‍ atd – 执行一次性命令的守护进程生活中，我们有太多场景需要使用到闹钟，比如早上 7 点起床，下午 4 点开会，晚上 8 点购物，等等。 在 Linux 系统里，我们同样也有类似的需求。比如我们想在凌晨 1 点将文件">
+<meta property="og:url" content="http://example.com/2024/10/17/Linux-crontab/index.html">
+<meta property="og:site_name" content="zero">
+<meta property="og:description" content="​crontab​ 是一个用于管理用户的定时任务调度工具。它允许用户设置在特定时间自动运行的命令或脚本，常用于定期执行备份、系统监控、数据处理等任务。 atd – 执行一次性命令的守护进程生活中，我们有太多场景需要使用到闹钟，比如早上 7 点起床，下午 4 点开会，晚上 8 点购物，等等。 在 Linux 系统里，我们同样也有类似的需求。比如我们想在凌晨 1 点将文件上传服务器，或者在晚上 10">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/image-20240929101230-geczmu2.png">
+<meta property="og:image" content="http://example.com/2024/10/17/Linux-crontab/image-20240929101230-geczmu2.png">
 <meta property="article:published_time" content="2024-10-17T02:46:25.000Z">
-<meta property="article:modified_time" content="2024-10-17T02:51:14.151Z">
+<meta property="article:modified_time" content="2024-10-17T06:37:07.766Z">
 <meta property="article:author" content="zyming">
+<meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/img/image-20240929101230-geczmu2.png">
+<meta name="twitter:image" content="http://example.com/2024/10/17/Linux-crontab/image-20240929101230-geczmu2.png">
 
 
-<link rel="canonical" href="http://example.com/2024/10/17/Linux%20crontab/">
+<link rel="canonical" href="http://example.com/2024/10/17/Linux-crontab/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2024/10/17/Linux%20crontab/","path":"2024/10/17/Linux crontab/","title":"Linux crontab"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2024/10/17/Linux-crontab/","path":"2024/10/17/Linux-crontab/","title":"Linux crontab"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Linux crontab | Hexo</title>
+<title>Linux crontab | zero</title>
   
 
 
@@ -74,7 +75,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <p class="site-title">Hexo</p>
+      <p class="site-title">zero</p>
       <i class="logo-line"></i>
     </a>
   </div>
@@ -113,7 +114,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux-crontab"><span class="nav-number">1.</span> <span class="nav-text">Linux crontab</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#atd-%E2%80%93-%E6%89%A7%E8%A1%8C%E4%B8%80%E6%AC%A1%E6%80%A7%E5%91%BD%E4%BB%A4%E7%9A%84%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">atd – 执行一次性命令的守护进程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#at%E5%AE%89%E8%A3%85"><span class="nav-number">2.1.</span> <span class="nav-text">at安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#atd%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8"><span class="nav-number">2.2.</span> <span class="nav-text">atd服务启动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#at%E5%91%BD%E4%BB%A4%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="nav-number">2.3.</span> <span class="nav-text">at命令基本用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-number">2.3.1.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-at-%E5%91%BD%E4%BB%A4%E4%BA%A4%E4%BA%92%E6%80%A7%E5%AE%89%E6%8E%92%E4%BB%BB%E5%8A%A1"><span class="nav-number">2.4.</span> <span class="nav-text">使用 at 命令交互性安排任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-at-%E5%91%BD%E4%BB%A4%E5%AE%89%E6%8E%92%E4%BB%BB%E5%8A%A1"><span class="nav-number">2.5.</span> <span class="nav-text">使用 at 命令安排任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B-at-%E4%BB%BB%E5%8A%A1%E9%98%9F%E5%88%97"><span class="nav-number">2.6.</span> <span class="nav-text">查看 at 任务队列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8E%E4%BB%BB%E5%8A%A1%E9%98%9F%E5%88%97%E4%B8%AD%E5%88%A0%E9%99%A4%E4%BB%BB%E5%8A%A1"><span class="nav-number">2.6.1.</span> <span class="nav-text">从任务队列中删除任务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AEat%E4%BB%BB%E5%8A%A1%E5%88%97%E8%A1%A8%E9%80%89%E6%8B%A9%E5%88%A0%E9%99%A4%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">2.7.</span> <span class="nav-text">根据at任务列表选择删除的内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8Bat%E4%BB%BB%E5%8A%A1%E5%86%85%E5%AE%B9"><span class="nav-number">2.8.</span> <span class="nav-text">查看at任务内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E7%AE%A1%E7%90%86%E5%91%98%E6%9D%83%E9%99%90%E6%9F%A5%E7%9C%8B-var-spool-at%E4%B8%AD%E4%BF%9D%E5%AD%98%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">2.8.1.</span> <span class="nav-text">通过管理员权限查看 &#x2F;var&#x2F;spool&#x2F;at中保存的内容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AEat%E4%BB%BB%E5%8A%A1%E5%88%97%E8%A1%A8%E9%80%89%E6%8B%A9%E6%9F%A5%E7%9C%8B%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">2.9.</span> <span class="nav-text">根据at任务列表选择查看的内容</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#batch-%E2%80%93%E7%B3%BB%E7%BB%9F%E7%A9%BA%E9%97%B2%E6%97%B6%E6%89%A7%E8%A1%8C%E7%9A%84%E5%90%8E%E5%8F%B0%E4%BB%BB%E5%8A%A1"><span class="nav-number">3.</span> <span class="nav-text">batch –系统空闲时执行的后台任务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#crond-%E2%80%93-%E6%89%A7%E8%A1%8C%E5%91%A8%E6%9C%9F%E6%80%A7%E5%91%BD%E4%BB%A4%E7%9A%84%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B"><span class="nav-number">4.</span> <span class="nav-text">crond – 执行周期性命令的守护进程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#crontab%E5%AE%89%E8%A3%85%E4%B8%8E%E6%A3%80%E6%9F%A5"><span class="nav-number">4.1.</span> <span class="nav-text">crontab安装与检查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#crontab%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8%E4%B8%8E%E5%85%B3%E9%97%AD"><span class="nav-number">4.2.</span> <span class="nav-text">crontab服务启动与关闭</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%EF%BC%88crontab%E6%AF%8F%E5%88%86%E9%92%9F%E6%A3%80%E6%B5%8B%E4%B8%80%E6%AC%A1-etc-crontab%E5%92%8C-var-spool-cron%EF%BC%89"><span class="nav-number">4.3.</span> <span class="nav-text">全局配置文件（crontab每分钟检测一次&#x2F;etc&#x2F;crontab和&#x2F;var&#x2F;spool&#x2F;cron）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">4.4.</span> <span class="nav-text">用户配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E5%AE%9E%E4%BE%8B"><span class="nav-number">4.5.</span> <span class="nav-text">定时任务实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2-%E5%88%A0%E9%99%A4%E5%BD%93%E5%89%8D%E7%94%A8%E6%88%B7%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1"><span class="nav-number">4.6.</span> <span class="nav-text">查询&#x2F;删除当前用户定时任务</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%AF%E5%94%A4%E9%86%92%E5%81%9C%E6%9C%BA%E6%9C%9F%E9%97%B4%E7%9A%84%E5%B7%A5%E4%BD%9C%E4%BB%BB%E5%8A%A1%EF%BC%88anacron%EF%BC%89"><span class="nav-number">5.</span> <span class="nav-text">可唤醒停机期间的工作任务（anacron）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#anacron%E4%B8%8E-etc-anacrontab"><span class="nav-number">5.1.</span> <span class="nav-text">anacron与&#x2F;etc&#x2F;anacrontab</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#anacrontab%E7%9A%84%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B%EF%BC%88%E4%BB%A5cron-daily%E4%B8%BA%E4%BE%8B%EF%BC%89"><span class="nav-number">5.2.</span> <span class="nav-text">anacrontab的执行流程（以cron.daily为例）</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#atd-%E2%80%93-%E6%89%A7%E8%A1%8C%E4%B8%80%E6%AC%A1%E6%80%A7%E5%91%BD%E4%BB%A4%E7%9A%84%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">atd – 执行一次性命令的守护进程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#at%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.</span> <span class="nav-text">at安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#atd%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8"><span class="nav-number">1.2.</span> <span class="nav-text">atd服务启动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#at%E5%91%BD%E4%BB%A4%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="nav-number">1.3.</span> <span class="nav-text">at命令基本用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.3.1.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-at-%E5%91%BD%E4%BB%A4%E4%BA%A4%E4%BA%92%E6%80%A7%E5%AE%89%E6%8E%92%E4%BB%BB%E5%8A%A1"><span class="nav-number">1.4.</span> <span class="nav-text">使用 at 命令交互性安排任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-at-%E5%91%BD%E4%BB%A4%E5%AE%89%E6%8E%92%E4%BB%BB%E5%8A%A1"><span class="nav-number">1.5.</span> <span class="nav-text">使用 at 命令安排任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B-at-%E4%BB%BB%E5%8A%A1%E9%98%9F%E5%88%97"><span class="nav-number">1.6.</span> <span class="nav-text">查看 at 任务队列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8E%E4%BB%BB%E5%8A%A1%E9%98%9F%E5%88%97%E4%B8%AD%E5%88%A0%E9%99%A4%E4%BB%BB%E5%8A%A1"><span class="nav-number">1.6.1.</span> <span class="nav-text">从任务队列中删除任务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AEat%E4%BB%BB%E5%8A%A1%E5%88%97%E8%A1%A8%E9%80%89%E6%8B%A9%E5%88%A0%E9%99%A4%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">1.7.</span> <span class="nav-text">根据at任务列表选择删除的内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8Bat%E4%BB%BB%E5%8A%A1%E5%86%85%E5%AE%B9"><span class="nav-number">1.8.</span> <span class="nav-text">查看at任务内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E7%AE%A1%E7%90%86%E5%91%98%E6%9D%83%E9%99%90%E6%9F%A5%E7%9C%8B-var-spool-at%E4%B8%AD%E4%BF%9D%E5%AD%98%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">1.8.1.</span> <span class="nav-text">通过管理员权限查看 &#x2F;var&#x2F;spool&#x2F;at中保存的内容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AEat%E4%BB%BB%E5%8A%A1%E5%88%97%E8%A1%A8%E9%80%89%E6%8B%A9%E6%9F%A5%E7%9C%8B%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">1.9.</span> <span class="nav-text">根据at任务列表选择查看的内容</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#batch-%E2%80%93%E7%B3%BB%E7%BB%9F%E7%A9%BA%E9%97%B2%E6%97%B6%E6%89%A7%E8%A1%8C%E7%9A%84%E5%90%8E%E5%8F%B0%E4%BB%BB%E5%8A%A1"><span class="nav-number">2.</span> <span class="nav-text">batch –系统空闲时执行的后台任务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#crond-%E2%80%93-%E6%89%A7%E8%A1%8C%E5%91%A8%E6%9C%9F%E6%80%A7%E5%91%BD%E4%BB%A4%E7%9A%84%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B"><span class="nav-number">3.</span> <span class="nav-text">crond – 执行周期性命令的守护进程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#crontab%E5%AE%89%E8%A3%85%E4%B8%8E%E6%A3%80%E6%9F%A5"><span class="nav-number">3.1.</span> <span class="nav-text">crontab安装与检查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#crontab%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8%E4%B8%8E%E5%85%B3%E9%97%AD"><span class="nav-number">3.2.</span> <span class="nav-text">crontab服务启动与关闭</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%EF%BC%88crontab%E6%AF%8F%E5%88%86%E9%92%9F%E6%A3%80%E6%B5%8B%E4%B8%80%E6%AC%A1-etc-crontab%E5%92%8C-var-spool-cron%EF%BC%89"><span class="nav-number">3.3.</span> <span class="nav-text">全局配置文件（crontab每分钟检测一次&#x2F;etc&#x2F;crontab和&#x2F;var&#x2F;spool&#x2F;cron）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">3.4.</span> <span class="nav-text">用户配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E5%AE%9E%E4%BE%8B"><span class="nav-number">3.5.</span> <span class="nav-text">定时任务实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2-%E5%88%A0%E9%99%A4%E5%BD%93%E5%89%8D%E7%94%A8%E6%88%B7%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1"><span class="nav-number">3.6.</span> <span class="nav-text">查询&#x2F;删除当前用户定时任务</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%AF%E5%94%A4%E9%86%92%E5%81%9C%E6%9C%BA%E6%9C%9F%E9%97%B4%E7%9A%84%E5%B7%A5%E4%BD%9C%E4%BB%BB%E5%8A%A1%EF%BC%88anacron%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">可唤醒停机期间的工作任务（anacron）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#anacron%E4%B8%8E-etc-anacrontab"><span class="nav-number">4.1.</span> <span class="nav-text">anacron与&#x2F;etc&#x2F;anacrontab</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#anacrontab%E7%9A%84%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B%EF%BC%88%E4%BB%A5cron-daily%E4%B8%BA%E4%BE%8B%EF%BC%89"><span class="nav-number">4.2.</span> <span class="nav-text">anacrontab的执行流程（以cron.daily为例）</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -129,6 +130,10 @@
           <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">日志</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">标签</span>
       </div>
   </nav>
 </div>
@@ -159,7 +164,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/10/17/Linux%20crontab/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/10/17/Linux-crontab/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -167,12 +172,12 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="zero">
       <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Linux crontab | Hexo">
+      <meta itemprop="name" content="Linux crontab | zero">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
@@ -189,7 +194,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2024-10-17 10:46:25 / 修改时间：10:51:14" itemprop="dateCreated datePublished" datetime="2024-10-17T10:46:25+08:00">2024-10-17</time>
+      <time title="创建时间：2024-10-17 10:46:25 / 修改时间：14:37:07" itemprop="dateCreated datePublished" datetime="2024-10-17T10:46:25+08:00">2024-10-17</time>
     </span>
 
   
@@ -201,20 +206,16 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1 id="Linux-crontab"><a href="#Linux-crontab" class="headerlink" title="Linux crontab"></a>Linux crontab</h1><p>​<code>crontab</code>​ 是一个用于管理用户的定时任务调度工具。它允许用户设置在特定时间自动运行的命令或脚本，常用于定期执行备份、系统监控、数据处理等任务。</p>
-<p>‍</p>
+    <div class="post-body" itemprop="articleBody"><p>​<code>crontab</code>​ 是一个用于管理用户的定时任务调度工具。它允许用户设置在特定时间自动运行的命令或脚本，常用于定期执行备份、系统监控、数据处理等任务。</p>
 <h1 id="atd-–-执行一次性命令的守护进程"><a href="#atd-–-执行一次性命令的守护进程" class="headerlink" title="atd – 执行一次性命令的守护进程"></a>atd – 执行一次性命令的守护进程</h1><p>生活中，我们有太多场景需要使用到闹钟，比如早上 7 点起床，下午 4 点开会，晚上 8 点购物，等等。</p>
 <p>在 Linux 系统里，我们同样也有类似的需求。比如我们想在凌晨 1 点将文件上传服务器，或者在晚上 10 点确认系统状态，等等。</p>
 <p>但我们不可能一直守在电脑前，毕竟我们也需要下班&#x2F;睡觉，还要陪对象（new一个也行）。而且即使在上班期间，如果到点了还需要人工操作，未免效率太低了。</p>
 <p>​<code>at</code>​ 命令就是为这个需求而诞生的。使用 <code>at</code>​ 命令，你可以在特定时间自动完成你所设定的任务，也可以实现自动化，非常方便快捷！</p>
-<p>‍</p>
 <h2 id="at安装"><a href="#at安装" class="headerlink" title="at安装"></a>at安装</h2><p>一般来讲，大部分 Linux 发行版都已经安装了 <code>at</code>​ 命令，不确定的话可以使用 <code>at -V</code>​ 命令查看，如果有版本返回，说明就可以正常使用 <code>at</code>​ 命令。</p>
 <p>at -V # 查看版本</p>
-<p>‍</p>
 <h2 id="atd服务启动"><a href="#atd服务启动" class="headerlink" title="atd服务启动"></a>atd服务启动</h2><p>你可以使用 <code>systemctl</code>​ 命令启用 <code>atd</code>​ 服务并将它们设置为从现在开始自动启动</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">enable</span> --now atd</span><br></pre></td></tr></table></figure>
 
-<p>‍</p>
 <h2 id="at命令基本用法"><a href="#at命令基本用法" class="headerlink" title="at命令基本用法"></a>at命令基本用法</h2><ul>
 <li><p>语法</p>
 <p>at [options] [time]</p>
@@ -236,27 +237,19 @@
 <h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><ol>
 <li>echo “echo ‘hello’ &gt;&gt; &#x2F;home&#x2F;zyming&#x2F;at-test.txt” | at 3:30 am 10&#x2F;01&#x2F;2024 或者 echo “echo ‘hello’ &gt;&gt; &#x2F;home&#x2F;zyming&#x2F;at-test.txt” | at 3:30 am 2024-10-01</li>
 </ol>
-<p>‍</p>
 <h2 id="使用-at-命令交互性安排任务"><a href="#使用-at-命令交互性安排任务" class="headerlink" title="使用 at 命令交互性安排任务"></a>使用 at 命令交互性安排任务</h2><p>at 11:00 am</p>
 <blockquote>
 <p>echo “hello” &gt;&gt; &#x2F;home&#x2F;zyming&#x2F;at-test.txt</p>
 </blockquote>
 <p>ctrl+d退出交互环境</p>
-<p>‍</p>
 <h2 id="使用-at-命令安排任务"><a href="#使用-at-命令安排任务" class="headerlink" title="使用 at 命令安排任务"></a>使用 at 命令安排任务</h2><p>echo “echo ‘hello again’ &gt;&gt; &#x2F;home&#x2F;zyming&#x2F;at-test.txt” | at now + 1 minutes</p>
-<p>‍</p>
 <h2 id="查看-at-任务队列"><a href="#查看-at-任务队列" class="headerlink" title="查看 at 任务队列"></a>查看 at 任务队列</h2><p>at -l &lt;&#x3D;&gt; atq</p>
-<p>‍</p>
 <h3 id="从任务队列中删除任务"><a href="#从任务队列中删除任务" class="headerlink" title="从任务队列中删除任务"></a>从任务队列中删除任务</h3><p>atrm &lt;任务编号&gt;</p>
-<p>‍</p>
 <h2 id="根据at任务列表选择删除的内容"><a href="#根据at任务列表选择删除的内容" class="headerlink" title="根据at任务列表选择删除的内容"></a>根据at任务列表选择删除的内容</h2><p>atq &amp;&amp; read -p “输入待查看at任务编号：” n &amp;&amp; atrm $n</p>
-<p>‍</p>
 <h2 id="查看at任务内容"><a href="#查看at任务内容" class="headerlink" title="查看at任务内容"></a>查看at任务内容</h2><p>at -c &lt;任务编号&gt; | tail -n +71 | head -n -2</p>
 <p>或者</p>
 <h3 id="通过管理员权限查看-var-spool-at中保存的内容"><a href="#通过管理员权限查看-var-spool-at中保存的内容" class="headerlink" title="通过管理员权限查看 &#x2F;var&#x2F;spool&#x2F;at中保存的内容"></a>通过管理员权限查看 &#x2F;var&#x2F;spool&#x2F;at中保存的内容</h3><p>(sudo ls &#x2F;var&#x2F;spool&#x2F;at | awk ‘{print NR “：” 1}’) &amp;&amp; read -p “需要查看第几个at任务：” n &amp;&amp; sudo tail -n+71 &#x2F;var&#x2F;spool&#x2F;at&#x2F;(sudo ls &#x2F;var&#x2F;spool&#x2F;at | head -n $n | tail -n 1)| head -n -2</p>
-<p>‍</p>
 <h2 id="根据at任务列表选择查看的内容"><a href="#根据at任务列表选择查看的内容" class="headerlink" title="根据at任务列表选择查看的内容"></a>根据at任务列表选择查看的内容</h2><p>atq &amp;&amp; read -p “输入待查看at任务编号：” n &amp;&amp;  (at -c $n | tail -n +71 | head -n -2)</p>
-<p>‍</p>
 <h1 id="batch-–系统空闲时执行的后台任务"><a href="#batch-–系统空闲时执行的后台任务" class="headerlink" title="batch –系统空闲时执行的后台任务"></a>batch –系统空闲时执行的后台任务</h1><p>batch是利用at来进行指令下达的，它会在cpu的工作负载小于0.8时，马上执行用户下达的工作任务。</p>
 <ol>
 <li>uptime # 查看当前负载（load average）</li>
@@ -268,15 +261,12 @@
 <li>jobs &gt; kill -9 %?</li>
 <li>uptime;atq # 查看执行与否</li>
 </ol>
-<p>‍</p>
 <h1 id="crond-–-执行周期性命令的守护进程"><a href="#crond-–-执行周期性命令的守护进程" class="headerlink" title="crond – 执行周期性命令的守护进程"></a>crond – 执行周期性命令的守护进程</h1><h2 id="crontab安装与检查"><a href="#crontab安装与检查" class="headerlink" title="crontab安装与检查"></a>crontab安装与检查</h2><p>sudo yum list crontabs # 检查是否安装</p>
 <p>crontab -V # 查看版本</p>
 <p>sudo yum install crontab</p>
-<p>‍</p>
 <h2 id="crontab服务启动与关闭"><a href="#crontab服务启动与关闭" class="headerlink" title="crontab服务启动与关闭"></a>crontab服务启动与关闭</h2><p>systemctl start crond # 启动</p>
 <p>systemctl stop crond # 关闭</p>
 <p>systemctl enable crond # 开机自启</p>
-<p>‍</p>
 <h2 id="全局配置文件（crontab每分钟检测一次-etc-crontab和-var-spool-cron）"><a href="#全局配置文件（crontab每分钟检测一次-etc-crontab和-var-spool-cron）" class="headerlink" title="全局配置文件（crontab每分钟检测一次&#x2F;etc&#x2F;crontab和&#x2F;var&#x2F;spool&#x2F;cron）"></a>全局配置文件（crontab每分钟检测一次&#x2F;etc&#x2F;crontab和&#x2F;var&#x2F;spool&#x2F;cron）</h2><p>cron.hourly # 是每个小时执行一次的job</p>
 <p>cron.daily # 是每天执行一次的job</p>
 <p>cron.monthly # 是每月执行一次的job</p>
@@ -291,12 +281,10 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">SHELL=/bin/bash</span><br><span class="line">PATH=/sbin:/bin:/usr/sbin:/usr/bin</span><br><span class="line">MAILTO=root</span><br><span class="line"></span><br><span class="line"><span class="comment"># For details see man 4 crontabs</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Example of job definition:</span></span><br><span class="line"><span class="comment"># .---------------- minute (0 - 59)</span></span><br><span class="line"><span class="comment"># |  .------------- hour (0 - 23)</span></span><br><span class="line"><span class="comment"># |  |  .---------- day of month (1 - 31)</span></span><br><span class="line"><span class="comment"># |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...</span></span><br><span class="line"><span class="comment"># |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat</span></span><br><span class="line"><span class="comment"># |  |  |  |  |</span></span><br><span class="line"><span class="comment"># *  *  *  *  * user-name  command to be executed</span></span><br></pre></td></tr></table></figure>
 
 <p>crontab.deny # 文件用于控制不让哪些用户使用crontab</p>
-<p>‍</p>
 <h2 id="用户配置文件"><a href="#用户配置文件" class="headerlink" title="用户配置文件"></a>用户配置文件</h2><p>每个用户都有自己的cron配置文件，通过crontab -e就可以编辑。</p>
-<p><a target="_blank" rel="noopener" href="https://crontab.guru/">https://crontab.guru/</a></p>
-<p>​<img src="/img/image-20240929101230-geczmu2.png" alt="image-20240929101230-geczmu2">​</p>
+<p><a target="_blank" rel="noopener" href="https://crontab.guru/">时间配置测试网站</a></p>
+<p><img src="/2024/10/17/Linux-crontab/image-20240929101230-geczmu2.png" alt="image-geczmu2"></p>
 <p>星号（）：代表所有可能的值，例如month字段如果是星号，则表示在满足其它字段的制约条件后每月都执行该命令操作。<br>逗号（,）：可以用逗号隔开的值指定一个列表范围，例如，“1,2,5,7,8,9”<br>中杠（-）：可以用整数之间的中杠表示一个整数范围，例如“2-6”表示“2,3,4,5,6”<br>正斜线（&#x2F;）：可以用正斜线指定时间的间隔频率，例如“0-23&#x2F;2”表示每两小时执行一次。同时正斜线可以和星号一起使用，例如&#x2F;10，如果用在minute字段，表示每十分钟执行一次。</p>
-<p>‍</p>
 <h2 id="定时任务实例"><a href="#定时任务实例" class="headerlink" title="定时任务实例"></a>定时任务实例</h2><ol>
 <li><p>每月每天凌晨3点30分和中午12点30分执行test.sh脚本</p>
 <p> 30 3,12 * * * &#x2F;home&#x2F;test.sh</p>
@@ -316,16 +304,13 @@
 </ol>
 <p><strong>注意</strong></p>
 <p> 某些时候天和星期一起设置会冲突</p>
-<p>‍</p>
 <h2 id="查询-删除当前用户定时任务"><a href="#查询-删除当前用户定时任务" class="headerlink" title="查询&#x2F;删除当前用户定时任务"></a>查询&#x2F;删除当前用户定时任务</h2><p>crontab -l &#x2F; crontab -r</p>
-<p>‍</p>
 <h1 id="可唤醒停机期间的工作任务（anacron）"><a href="#可唤醒停机期间的工作任务（anacron）" class="headerlink" title="可唤醒停机期间的工作任务（anacron）"></a>可唤醒停机期间的工作任务（anacron）</h1><ol>
 <li><p>目的</p>
 <p> anacron不是crontab的替代物，它是一个程序，针对非24小时一直启动linux系统的crontab执行，以及由于特殊原因超过预计时间没被执行的定时任务而提出</p>
 </li>
 </ol>
 <h2 id="anacron与-etc-anacrontab"><a href="#anacron与-etc-anacrontab" class="headerlink" title="anacron与&#x2F;etc&#x2F;anacrontab"></a>anacron与&#x2F;etc&#x2F;anacrontab</h2><p>anacron是一个程序，放到了&#x2F;etc&#x2F;cron.hourly，得以每个小时运行一次。</p>
-<p>‍</p>
 <h2 id="anacrontab的执行流程（以cron-daily为例）"><a href="#anacrontab的执行流程（以cron-daily为例）" class="headerlink" title="anacrontab的执行流程（以cron.daily为例）"></a>anacrontab的执行流程（以cron.daily为例）</h2><ol>
 <li>分析&#x2F;etc&#x2F;anacrontab，得到cron.dailly的执行周期为1天；</li>
 <li>由&#x2F;var&#x2F;spool&#x2F;cron.daily得到上次执行anacrontab的时间戳；</li>
@@ -334,11 +319,6 @@
 <li>执行完 run-parts &#x2F;etc&#x2F;cron.daily，anacrontab整个流程结束。</li>
 </ol>
 <p>总结：anacrontab每个小时去检测时间戳的差距，可以使得cron.daily中的任务每天执行一次，而由于其执行周期为1小时，因此开机后的1小时左右系统会进行一定的检测工作。</p>
-<p>‍</p>
-<p>‍</p>
-<p>‍</p>
-<p>‍</p>
-<p>‍</p>
 
     </div>
 
@@ -347,6 +327,9 @@
     
 
     <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/linux/" rel="tag"># linux</a>
+          </div>
 
         
 
