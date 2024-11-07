@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.21.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="RAID的全称是Redundant Array of Independent Disks，中文译作独立硬盘冗余阵列， 简称磁盘阵列。 RAID利用虚拟化存储技术把多个硬盘组合起来，成为一个或多个硬盘阵列组，目的为提升读取性能或数据备份，或是两者同时提升。 介绍RAID分为多种存储模式，亦或称多种层级，RAID层级的命名会以RAID开头并带数字，例如：RAID 0、RAID 1、RAID 10等等。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="磁盘阵列RAID">
+<meta property="og:url" content="http://example.com/2024/11/06/Linux-raid/index.html">
+<meta property="og:site_name" content="zero">
+<meta property="og:description" content="RAID的全称是Redundant Array of Independent Disks，中文译作独立硬盘冗余阵列， 简称磁盘阵列。 RAID利用虚拟化存储技术把多个硬盘组合起来，成为一个或多个硬盘阵列组，目的为提升读取性能或数据备份，或是两者同时提升。 介绍RAID分为多种存储模式，亦或称多种层级，RAID层级的命名会以RAID开头并带数字，例如：RAID 0、RAID 1、RAID 10等等。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2024/11/06/Linux-raid/image-20241104165843-twjv8ax.png">
+<meta property="og:image" content="http://example.com/2024/11/06/Linux-raid/image-20241105100554-kxizp6z.png">
+<meta property="og:image" content="http://example.com/2024/11/06/Linux-raid/image-20241105135050-i9iq6q2.png">
+<meta property="og:image" content="http://example.com/2024/11/06/Linux-raid/image-20241105135106-z062oh2.png">
+<meta property="og:image" content="http://example.com/2024/11/06/Linux-raid/image-20241105143626-37gs2nd.png">
+<meta property="og:image" content="http://example.com/2024/11/06/Linux-raid/image-20241105143635-9wlyiuo.png">
+<meta property="article:published_time" content="2024-11-06T08:50:10.000Z">
+<meta property="article:modified_time" content="2024-11-07T01:45:24.261Z">
+<meta property="article:author" content="zyming">
+<meta property="article:tag" content="linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2024/11/06/Linux-raid/image-20241104165843-twjv8ax.png">
+
+
+<link rel="canonical" href="http://example.com/2024/11/06/Linux-raid/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2024/11/06/Linux-raid/","path":"2024/11/06/Linux-raid/","title":"磁盘阵列RAID"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>磁盘阵列RAID | zero</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">zero</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RAID-0%EF%BC%88%E6%9D%A1%E5%B8%A6%E5%8C%96%EF%BC%89-RAID-1%EF%BC%88%E9%95%9C%E5%83%8F%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">RAID 0（条带化）&#x2F;RAID 1（镜像）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RAID-10%EF%BC%88%E9%95%9C%E5%83%8F-%E6%9D%A1%E5%B8%A6%E5%8C%96%EF%BC%89-RAID-01%EF%BC%88%E6%9D%A1%E5%B8%A6%E5%8C%96-%E9%95%9C%E5%83%8F%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">RAID 10（镜像+条带化）&#x2F;RAID 01（条带化+镜像）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RAID-5-RAID-6"><span class="nav-number">4.</span> <span class="nav-text">RAID 5&#x2F;RAID 6</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RAID-50"><span class="nav-number">5.</span> <span class="nav-text">RAID 50</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RAID-60"><span class="nav-number">6.</span> <span class="nav-text">RAID 60</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A3%81%E7%9B%98%E9%98%B5%E5%88%97%E6%AF%94%E8%BE%83"><span class="nav-number">7.</span> <span class="nav-text">磁盘阵列比较</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E6%A8%A1%E5%BC%8F"><span class="nav-number">8.</span> <span class="nav-text">实现模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6RAID"><span class="nav-number">8.1.</span> <span class="nav-text">软件RAID</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A1%AC%E4%BB%B6RAID"><span class="nav-number">8.2.</span> <span class="nav-text">硬件RAID</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">9.</span> <span class="nav-text">参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">zyming</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/losingMyPieces" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;losingMyPieces" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zyming21@gmail.com" title="E-Mail → mailto:zyming21@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+
+<!-- require APlayer -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+<meting-js
+	server="netease"
+	type="playlist"
+	id="12755984864">
+</meting-js>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/11/06/Linux-raid/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zyming">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zero">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="磁盘阵列RAID | zero">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          磁盘阵列RAID
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-11-06 16:50:10" itemprop="dateCreated datePublished" datetime="2024-11-06T16:50:10+08:00">2024-11-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-11-07 09:45:24" itemprop="dateModified" datetime="2024-11-07T09:45:24+08:00">2024-11-07</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><strong>RAID的全称是R</strong>edundant <strong>A</strong>rray of <strong>I</strong>ndependent <strong>D</strong>isks，中文译作<strong>独立硬盘冗余阵列，</strong> 简称<strong>磁盘阵列。</strong> RAID利用虚拟化存储技术把多个硬盘组合起来，成为一个或多个硬盘阵列组，目的为<strong>提升读取性能</strong>或<strong>数据备份</strong>，或是两者同时提升。</p>
+<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>RAID分为多种存储模式，亦或称<strong>多种层级</strong>，RAID层级的命名会以RAID开头并带数字，例如：RAID 0、RAID 1、RAID 10等等。每种层级在理论上均有其优缺点，要么在上述两个目的之间寻求平衡，要么为单一的目的。</p>
+<p>简单来说，RAID可以看成一块<strong>逻辑硬盘</strong>，而不去管实际的物理实现。</p>
+<h1 id="RAID-0（条带化）-RAID-1（镜像）"><a href="#RAID-0（条带化）-RAID-1（镜像）" class="headerlink" title="RAID 0（条带化）&#x2F;RAID 1（镜像）"></a>RAID 0（条带化）&#x2F;RAID 1（镜像）</h1><p><strong>RAID 0</strong>亦称为带区卷，它将两个以上的磁盘并联起来，成为一个大容量的磁盘。RAID 0模式下，数据被分成固定大小的块，分散存储在多个磁盘驱动器上，而不进行冗余备份。例如，如果有两个驱动器（驱动器0和驱动器1），数据A分为8块，其第一个部分A1存储在驱动器0上，第二个部分A2存储在驱动器1上，以此类推。这种<strong>条带化（striping）</strong> 的方式可以同时从多个驱动器读取或写入数据，从而提高系统的性能。RAID 0的优势是高速读写，但一旦其中一个磁盘故障，整个数据集将无法恢复。</p>
+<table>
+  <tr>
+    <td><img src="image-20241104165843-twjv8ax.png" width="700px" height="300px" /></td>
+    <td><img src="image-20241105100554-kxizp6z.png" width="700px" height="300px"  /></td>
+  </tr>
+</table>
+
+<p><strong>RAID 1</strong>使用<strong>镜像</strong>（mirroring）技术，将数据同时写入两个磁盘。这样可以提供冗余备份，如果一个磁盘发生故障，数据仍然可从另一个磁盘恢复。RAID 1的优势是<strong>高可靠性</strong>，但成本较高，因为需要两倍的磁盘容量。​​</p>
+<h1 id="RAID-10（镜像-条带化）-RAID-01（条带化-镜像）"><a href="#RAID-10（镜像-条带化）-RAID-01（条带化-镜像）" class="headerlink" title="RAID 10（镜像+条带化）&#x2F;RAID 01（条带化+镜像）"></a>RAID 10（镜像+条带化）&#x2F;RAID 01（条带化+镜像）</h1><p><strong>RAID 10</strong>是将RAID 1和RAID 0两种技术结合起来的一种RAID层级。RAID 10也需要至少<strong>4块硬盘</strong>，将它们分为两组，每组至少有两块硬盘。RAID 10实现方式为：先实现两块磁盘的镜像复制(RAID 1)，并且这样的设定有多组，然后将两个RAID 1组中的数据进行条带化(RAID 0)。RAID10的优点是<strong>数据可靠性高</strong>，<strong>读写速度快</strong>，适合高性能应用和数据库等。它能容忍多个磁盘故障，只要故障的磁盘不在同一组内。</p>
+<table>
+  <tr>
+    <td><img src="image-20241105135050-i9iq6q2.png" width="300px" /></td>
+    <td><img src="image-20241105135106-z062oh2.png" width="300px" /></td>
+  </tr>
+</table>
+
+<p><strong>RAID 01</strong>则与RAID 10相反，RAID 01的数据写入方式是将数据分成两份，分别写入两个RAID 0组中，然后再将两个RAID 0组中的数据进行镜像复制(RAID 1)。RAID 01的优点是可以提高读写速度和数据冗余，适合大型文件传输和视频编辑等。RAID 01提供了高性能和高可靠性，但与RAID 10相比，它<strong>更容易受到磁盘故障带来的影响，</strong> 因为当RAID 10有一个硬盘受损，其余硬盘会继续运作。RAID 01只要有一个硬盘受损，同组RAID 0的所有硬盘都会停止运作，只剩下其他组的硬盘运作。</p>
+<h1 id="RAID-5-RAID-6"><a href="#RAID-5-RAID-6" class="headerlink" title="RAID 5&#x2F;RAID 6"></a>RAID 5&#x2F;RAID 6</h1><p><strong>RAID 5</strong>使用数据条带化的方式将数据分散存储在多个磁盘驱动器上，并通过分布式<strong>奇偶校验</strong>实现数据的冗余备份。数据和奇偶校验信息被组织成数据块，其中奇偶校验信息被分布式存储在不同的驱动器上。当写入数据时，奇偶校验信息也会被更新。如果其中一个驱动器发生故障，系统可以通过重新计算奇偶校验信息来恢复丢失的数据。这种方式可以同时提供性能增强和数据冗余。</p>
+<table>
+  <tr>
+    <td><img src="image-20241105143626-37gs2nd.png" width="300px" /></td>
+    <td><img src="image-20241105143635-9wlyiuo.png" width="300px" /></td>
+  </tr>
+</table>
+
+<p>与RAID 5相比，<strong>RAID 6</strong>增加<strong>第二个独立的奇偶校验信息块</strong>。两个独立的奇偶系统使用不同的算法，数据的可靠性非常高，任意两块磁盘同时失效时不会影响数据完整性。RAID 6需要分配给奇偶校验信息更大的磁盘空间和额外的校验计算，相对于RAID 5有更大的IO操作量和计算量，其“写性能”强烈取决于具体的实现方案，因此RAID 6通常不会通过软件方式来实现 ，而更可能通过硬件方式实现。</p>
+<h1 id="RAID-50"><a href="#RAID-50" class="headerlink" title="RAID 50"></a>RAID 50</h1><p><strong>RAID 50</strong>是RAID 5与RAID 0的组合，先作RAID 5，再作RAID 0，也就是对多组RAID 5彼此构成Stripe访问。由于RAID 50是以RAID 5为基础，而RAID 5至少需要3颗硬盘，因此要以多组RAID 5构成RAID 50，至少需要6颗硬盘。以RAID 50最小的6颗硬盘配置为例，先把6颗硬盘分为2组，每组3颗构成RAID 5，如此就得到两组RAID 5，然后再把两组RAID 5构成RAID 0。</p>
+<p>RAID 50在底层的任一组或多组RAID 5中出现<strong>1颗硬盘损坏</strong>时，仍能维持运作，不过如果任一组RAID 5中出现2颗或2颗以上硬盘损毁，整组RAID 50就会失效。</p>
+<p>RAID 50由于在上层把多组RAID 5构成Stripe，性能比起单纯的RAID 5高，容量利用率比RAID 5要低。比如同样使用9颗硬盘，由各3颗RAID 5再组成RAID 0的RAID 50，每组RAID 5浪费一颗硬盘，利用率为(1-3&#x2F;9)，RAID 5则为(1-1&#x2F;9)。</p>
+<h1 id="RAID-60"><a href="#RAID-60" class="headerlink" title="RAID 60"></a>RAID 60</h1><p><strong>RAID 60</strong>是RAID 6与RAID 0的组合：先作RAID 6，再作RAID 0。换句话说，就是对两组以上的RAID 6作Stripe访问。RAID 6至少需具备4颗硬盘，所以RAID 60的最小需求是8颗硬盘。</p>
+<p>由于底层是以RAID 6组成，所以RAID 60可以容许任一组RAID 6中<strong>损毁最多2颗硬盘</strong>，而系统仍能维持运作；不过只要底层任一组RAID 6中损毁3颗硬盘，整组RAID 60就会失效，当然这种情况的概率相当低。</p>
+<p>比起单纯的RAID 6，RAID 60的上层透过结合多组RAID 6构成Stripe访问，因此性能较高。不过使用门槛高，而且容量利用率低是较大的问题。</p>
+<p>接下来对以上给出的RAID层级进行比较。</p>
+<h1 id="磁盘阵列比较"><a href="#磁盘阵列比较" class="headerlink" title="磁盘阵列比较"></a>磁盘阵列比较</h1><p>这里给出wiki的磁盘阵列比较表，假设我们手里有n块磁盘：</p>
+<table>
+<thead>
+<tr>
+<th>RAID等级</th>
+<th>最少硬盘</th>
+<th>最大容错</th>
+<th>可用容量</th>
+<th>读取性能</th>
+<th>写入性能</th>
+<th>安全性</th>
+<th>目的</th>
+<th>应用产业</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>单一硬盘</td>
+<td>(参考)</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>无</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>JBOD</td>
+<td>1</td>
+<td>0</td>
+<td>n</td>
+<td>1</td>
+<td>1</td>
+<td>无（同RAID 0）</td>
+<td>增加容量</td>
+<td>个人（暂时）存储备份</td>
+</tr>
+<tr>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+<td>n</td>
+<td>n</td>
+<td>n</td>
+<td>一个硬盘异常，全部资料都会异常</td>
+<td>追求最大容量、速度</td>
+<td>影片剪接缓存用途</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>n-1</td>
+<td>1</td>
+<td>n</td>
+<td>1</td>
+<td>高，一个正常即可</td>
+<td>追求最大安全性</td>
+<td>个人、企业备份</td>
+</tr>
+<tr>
+<td>5</td>
+<td>3</td>
+<td>1</td>
+<td>n-1</td>
+<td>n-1</td>
+<td>n-1</td>
+<td>中下至中</td>
+<td>追求最大容量、最小预算</td>
+<td>个人、小型企业备份</td>
+</tr>
+<tr>
+<td>6</td>
+<td>4</td>
+<td>2</td>
+<td>n-2</td>
+<td>n-2</td>
+<td>n-2</td>
+<td>中至中高,仅安全性较RAID 5高</td>
+<td>同RAID 5，但较安全</td>
+<td>个人、企业备份</td>
+</tr>
+<tr>
+<td>10</td>
+<td>4</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>高</td>
+<td>综合RAID 0&#x2F;1优点，理论速度较快</td>
+<td>大型数据库、服务器</td>
+</tr>
+<tr>
+<td>50</td>
+<td>6</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>高</td>
+<td>提升资料安全</td>
+<td></td>
+</tr>
+<tr>
+<td>60</td>
+<td>8</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>高</td>
+<td>提升资料安全</td>
+<td></td>
+</tr>
+</tbody></table>
+<ul>
+<li>JBOD（Just a Bunch Of Disks）指将数个物理硬盘，在操作系统中合并成一个逻辑硬盘，以直接增加容量；</li>
+<li>依不同 RAID 厂商实现算法对于性能表现会有不同，以上性能只是理论论述。</li>
+</ul>
+<h1 id="实现模式"><a href="#实现模式" class="headerlink" title="实现模式"></a>实现模式</h1><p>RAID根据其实现方式可分为<strong>软件RAID</strong>和<strong>硬件RAID</strong>。其区别在于硬件RAID可以逻辑上看成是完整的一块磁盘，因此硬件RAID的装置文件名为&#x2F;dev&#x2F;sd[a-p]，而软件RAID则是<strong>系统仿真</strong>的，使用系统的装置文件，文件名为&#x2F;dev&#x2F;md[0-…]。</p>
+<h2 id="软件RAID"><a href="#软件RAID" class="headerlink" title="软件RAID"></a>软件RAID</h2><p>主要由CPU处理存储作业，缺点为耗损较多CPU资源运算RAID，优点则是价格低。</p>
+<ul>
+<li>硬件辅助RAID（Hardware-Assisted RAID）：需要一张<strong>伪RAID卡</strong>，以及厂商所提供的驱动程序，但此类RAID卡仍然借助CPU进行运算。此类RAID卡的阵列较易迁移到其他电脑，其RAID功能靠执行于操作系统的厂商驱动程序和CPU运算提供。</li>
+<li>操作系统的RAID功能：如<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Linux" title="Linux">Linux</a>、<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/FreeBSD" title="FreeBSD">FreeBSD</a>、<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Windows_Server" title="Windows Server">Windows Server</a>等操作系统内置RAID功能。</li>
+<li>Windows10内置的磁盘管理有五种模式：</li>
+</ul>
+<p><strong>简单卷</strong>：独立运作的基本分区。若PC上只有一个物理磁盘，那么只能创建简单卷。</p>
+<p><strong>跨距卷（跨区卷）</strong> ：将不同物理磁盘的多个未配置空间合并为一个逻辑扇区。资料的存放机制是由第一颗硬盘开始依序往后存放，操作系统会视为一个硬盘。如果任一个物理硬盘损毁，则该逻辑扇区上的所有资料将无法救回。<mark>（可看成RAID 0）</mark></p>
+<p><strong>等量卷（带区卷）</strong> ：由两个或多个物理磁盘的相同容量空间组成。资料分布在多个物理磁盘中，可以提高性能。<mark>（可看成RAID 0）</mark></p>
+<p><strong>镜像卷</strong>：将两个或多个物理磁盘中创建完全相同的资料副本，即使其中一个物理硬盘损坏，资料仍然可以从其他冗余副本中获取，具有容错空间。若物理磁盘容量大小不同，实际可用空间将等于最小的物理磁盘。<mark>（可看成RAID 1）</mark></p>
+<p><strong>RAID-5卷</strong>：最大可支持9.4ZB的硬盘容量，最多可创建128个分区。</p>
+<h2 id="硬件RAID"><a href="#硬件RAID" class="headerlink" title="硬件RAID"></a>硬件RAID</h2><ul>
+<li>基于<strong>主板</strong>的磁盘阵列：只需要主板支持即可（通常是<strong>芯片组内置</strong>的RAID功能，如Intel Matrix RAID，后来变为<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Intel_Rapid_Storage_Technology" title="Intel Rapid Storage Technology">Intel Rapid Storage Technology</a>），不需要任何磁盘阵列卡。若主板损坏，可能难以购买同款主板重建RAID。</li>
+<li>RAID卡：与Fake RAID卡相比，RAID卡基于片上RAID (ROC, RAID-on-chip)，具有独立的CPU资源及独立BIOS。优点是<strong>读写性能快</strong>，<strong>不占用服务器资源</strong>，<strong>可用于任何操作系统</strong>。然而，其缺点在于<strong>售价较高</strong>，且性能与价格呈正相关。此外，使用RAID卡还可能因内置的自检程序而导致电脑<strong>启动时间增加</strong>。</li>
+</ul>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/RAID">RAID - 维基百科，自由的百科全书</a></p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2304179">完全图解RAID存储技术：RAID 0、1、5、6、10、50、60-腾讯云开发者社区-腾讯云</a></p>
+<p>‍</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/linux/" rel="tag"># linux</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/11/01/Linux-lvm/" rel="prev" title="LVM磁盘空间管理">
+                  <i class="fa fa-angle-left"></i> LVM磁盘空间管理
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">zyming</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
