@@ -207,7 +207,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-11-07 09:53:00" itemprop="dateModified" datetime="2024-11-07T09:53:00+08:00">2024-11-07</time>
+      <time title="修改时间：2024-11-07 10:20:28" itemprop="dateModified" datetime="2024-11-07T10:20:28+08:00">2024-11-07</time>
     </span>
 
   
@@ -235,21 +235,23 @@
 <p><strong>RAID 1</strong>使用<strong>镜像</strong>（mirroring）技术，将数据同时写入两个磁盘。这样可以提供冗余备份，如果一个磁盘发生故障，数据仍然可从另一个磁盘恢复。RAID 1的优势是<strong>高可靠性</strong>，但成本较高，因为需要两倍的磁盘容量。​​</p>
 <h1 id="RAID-10（镜像-条带化）-RAID-01（条带化-镜像）"><a href="#RAID-10（镜像-条带化）-RAID-01（条带化-镜像）" class="headerlink" title="RAID 10（镜像+条带化）&#x2F;RAID 01（条带化+镜像）"></a>RAID 10（镜像+条带化）&#x2F;RAID 01（条带化+镜像）</h1><p><strong>RAID 10</strong>是将RAID 1和RAID 0两种技术结合起来的一种RAID层级。RAID 10也需要至少<strong>4块硬盘</strong>，将它们分为两组，每组至少有两块硬盘。RAID 10实现方式为：先实现两块磁盘的镜像复制(RAID 1)，并且这样的设定有多组，然后将两个RAID 1组中的数据进行条带化(RAID 0)。RAID10的优点是<strong>数据可靠性高</strong>，<strong>读写速度快</strong>，适合高性能应用和数据库等。它能容忍多个磁盘故障，只要故障的磁盘不在同一组内。</p>
 <table>
-  <tr>
-    <td><img src="image-20241105135050-i9iq6q2.png" width="250px" /></td>
-    <td><img src="image-20241105135106-z062oh2.png" width="250px" /></td>
-  </tr>
+<thead>
+<tr>
+<th><img src="/2024/11/06/Linux-raid/image-20241105135050-i9iq6q2.png" alt="image-20241105135050-i9iq6q2"></th>
+<th><img src="/2024/11/06/Linux-raid/image-20241105135106-z062oh2.png" alt="image-20241105135106-z062oh2"></th>
+</tr>
+</thead>
 </table>
-
 <p><strong>RAID 01</strong>则与RAID 10相反，RAID 01的数据写入方式是将数据分成两份，分别写入两个RAID 0组中，然后再将两个RAID 0组中的数据进行镜像复制(RAID 1)。RAID 01的优点是可以提高读写速度和数据冗余，适合大型文件传输和视频编辑等。RAID 01提供了高性能和高可靠性，但与RAID 10相比，它<strong>更容易受到磁盘故障带来的影响，</strong> 因为当RAID 10有一个硬盘受损，其余硬盘会继续运作。RAID 01只要有一个硬盘受损，同组RAID 0的所有硬盘都会停止运作，只剩下其他组的硬盘运作。</p>
 <h1 id="RAID-5-RAID-6"><a href="#RAID-5-RAID-6" class="headerlink" title="RAID 5&#x2F;RAID 6"></a>RAID 5&#x2F;RAID 6</h1><p><strong>RAID 5</strong>使用数据条带化的方式将数据分散存储在多个磁盘驱动器上，并通过分布式<strong>奇偶校验</strong>实现数据的冗余备份。数据和奇偶校验信息被组织成数据块，其中奇偶校验信息被分布式存储在不同的驱动器上。当写入数据时，奇偶校验信息也会被更新。如果其中一个驱动器发生故障，系统可以通过重新计算奇偶校验信息来恢复丢失的数据。这种方式可以同时提供性能增强和数据冗余。</p>
 <table>
-  <tr>
-    <td><img src="image-20241105143626-37gs2nd.png" width="250px" /></td>
-    <td><img src="image-20241105143635-9wlyiuo.png" width="250px" /></td>
-  </tr>
+<thead>
+<tr>
+<th><img src="/2024/11/06/Linux-raid/image-20241105143626-37gs2nd.png" alt="image-20241105143626-37gs2nd"></th>
+<th><img src="/2024/11/06/Linux-raid/image-20241105143635-9wlyiuo.png" alt="image-20241105143635-9wlyiuo"></th>
+</tr>
+</thead>
 </table>
-
 <p>与RAID 5相比，<strong>RAID 6</strong>增加<strong>第二个独立的奇偶校验信息块</strong>。两个独立的奇偶系统使用不同的算法，数据的可靠性非常高，任意两块磁盘同时失效时不会影响数据完整性。RAID 6需要分配给奇偶校验信息更大的磁盘空间和额外的校验计算，相对于RAID 5有更大的IO操作量和计算量，其“写性能”强烈取决于具体的实现方案，因此RAID 6通常不会通过软件方式来实现 ，而更可能通过硬件方式实现。</p>
 <h1 id="RAID-50"><a href="#RAID-50" class="headerlink" title="RAID 50"></a>RAID 50</h1><p><strong>RAID 50</strong>是RAID 5与RAID 0的组合，先作RAID 5，再作RAID 0，也就是对多组RAID 5彼此构成Stripe访问。由于RAID 50是以RAID 5为基础，而RAID 5至少需要3颗硬盘，因此要以多组RAID 5构成RAID 50，至少需要6颗硬盘。以RAID 50最小的6颗硬盘配置为例，先把6颗硬盘分为2组，每组3颗构成RAID 5，如此就得到两组RAID 5，然后再把两组RAID 5构成RAID 0。</p>
 <p>RAID 50在底层的任一组或多组RAID 5中出现<strong>1颗硬盘损坏</strong>时，仍能维持运作，不过如果任一组RAID 5中出现2颗或2颗以上硬盘损毁，整组RAID 50就会失效。</p>
