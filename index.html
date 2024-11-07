@@ -207,7 +207,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-11-07 09:45:24" itemprop="dateModified" datetime="2024-11-07T09:45:24+08:00">2024-11-07</time>
+      <time title="修改时间：2024-11-07 09:53:00" itemprop="dateModified" datetime="2024-11-07T09:53:00+08:00">2024-11-07</time>
     </span>
 
   
@@ -225,18 +225,19 @@
 <p>简单来说，RAID可以看成一块<strong>逻辑硬盘</strong>，而不去管实际的物理实现。</p>
 <h1 id="RAID-0（条带化）-RAID-1（镜像）"><a href="#RAID-0（条带化）-RAID-1（镜像）" class="headerlink" title="RAID 0（条带化）&#x2F;RAID 1（镜像）"></a>RAID 0（条带化）&#x2F;RAID 1（镜像）</h1><p><strong>RAID 0</strong>亦称为带区卷，它将两个以上的磁盘并联起来，成为一个大容量的磁盘。RAID 0模式下，数据被分成固定大小的块，分散存储在多个磁盘驱动器上，而不进行冗余备份。例如，如果有两个驱动器（驱动器0和驱动器1），数据A分为8块，其第一个部分A1存储在驱动器0上，第二个部分A2存储在驱动器1上，以此类推。这种<strong>条带化（striping）</strong> 的方式可以同时从多个驱动器读取或写入数据，从而提高系统的性能。RAID 0的优势是高速读写，但一旦其中一个磁盘故障，整个数据集将无法恢复。</p>
 <table>
-  <tr>
-    <td><img src="image-20241104165843-twjv8ax.png" width="700px" height="300px" /></td>
-    <td><img src="image-20241105100554-kxizp6z.png" width="700px" height="300px"  /></td>
-  </tr>
+<thead>
+<tr>
+<th><img src="/2024/11/06/Linux-raid/image-20241104165843-twjv8ax.png" alt="image-20241105100554-kxizp6z"></th>
+<th><img src="/2024/11/06/Linux-raid/image-20241105100554-kxizp6z.png" alt="image-20241105100554-kxizp6z"></th>
+</tr>
+</thead>
 </table>
-
 <p><strong>RAID 1</strong>使用<strong>镜像</strong>（mirroring）技术，将数据同时写入两个磁盘。这样可以提供冗余备份，如果一个磁盘发生故障，数据仍然可从另一个磁盘恢复。RAID 1的优势是<strong>高可靠性</strong>，但成本较高，因为需要两倍的磁盘容量。​​</p>
 <h1 id="RAID-10（镜像-条带化）-RAID-01（条带化-镜像）"><a href="#RAID-10（镜像-条带化）-RAID-01（条带化-镜像）" class="headerlink" title="RAID 10（镜像+条带化）&#x2F;RAID 01（条带化+镜像）"></a>RAID 10（镜像+条带化）&#x2F;RAID 01（条带化+镜像）</h1><p><strong>RAID 10</strong>是将RAID 1和RAID 0两种技术结合起来的一种RAID层级。RAID 10也需要至少<strong>4块硬盘</strong>，将它们分为两组，每组至少有两块硬盘。RAID 10实现方式为：先实现两块磁盘的镜像复制(RAID 1)，并且这样的设定有多组，然后将两个RAID 1组中的数据进行条带化(RAID 0)。RAID10的优点是<strong>数据可靠性高</strong>，<strong>读写速度快</strong>，适合高性能应用和数据库等。它能容忍多个磁盘故障，只要故障的磁盘不在同一组内。</p>
 <table>
   <tr>
-    <td><img src="image-20241105135050-i9iq6q2.png" width="300px" /></td>
-    <td><img src="image-20241105135106-z062oh2.png" width="300px" /></td>
+    <td><img src="image-20241105135050-i9iq6q2.png" width="250px" /></td>
+    <td><img src="image-20241105135106-z062oh2.png" width="250px" /></td>
   </tr>
 </table>
 
@@ -244,8 +245,8 @@
 <h1 id="RAID-5-RAID-6"><a href="#RAID-5-RAID-6" class="headerlink" title="RAID 5&#x2F;RAID 6"></a>RAID 5&#x2F;RAID 6</h1><p><strong>RAID 5</strong>使用数据条带化的方式将数据分散存储在多个磁盘驱动器上，并通过分布式<strong>奇偶校验</strong>实现数据的冗余备份。数据和奇偶校验信息被组织成数据块，其中奇偶校验信息被分布式存储在不同的驱动器上。当写入数据时，奇偶校验信息也会被更新。如果其中一个驱动器发生故障，系统可以通过重新计算奇偶校验信息来恢复丢失的数据。这种方式可以同时提供性能增强和数据冗余。</p>
 <table>
   <tr>
-    <td><img src="image-20241105143626-37gs2nd.png" width="300px" /></td>
-    <td><img src="image-20241105143635-9wlyiuo.png" width="300px" /></td>
+    <td><img src="image-20241105143626-37gs2nd.png" width="250px" /></td>
+    <td><img src="image-20241105143635-9wlyiuo.png" width="250px" /></td>
   </tr>
 </table>
 
