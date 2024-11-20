@@ -119,7 +119,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -162,6 +162,120 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/11/20/Linux-ftp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zyming">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zero">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | zero">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/11/20/Linux-ftp/" class="post-title-link" itemprop="url">ftp服务与虚拟用户配置</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-11-20 14:10:39 / 修改时间：14:24:10" itemprop="dateCreated datePublished" datetime="2024-11-20T14:10:39+08:00">2024-11-20</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>将某台计算机中的文件通过网络传送到可能相距很远的另一台计算机中，即<strong>文件传输，</strong> 是一项基本的网络应用。很多时候有这样的需求：网站设计者将构成网站内容的文件批量上传到他们的Web服务器，计算机之间批量传输文件等，而ftp协议可以很好地满足这种需求。</p>
+<p>ftp（file transport protocol）<strong>文件传输协议</strong>，是<strong>TCP&#x2F;IP</strong>协议组中的协议。ftp协议包含两个部分，1是服务器，2是客户端。其中ftp服务器用来存储文件，而客户端通过ftp协议访问ftp服务器上的资源。</p>
+<p>默认情况下，ftp协议使用<strong>20和21端口</strong>，其中<strong>20用于传输数据</strong>，<strong>21用于传输控制信息</strong>。</p>
+<h1 id="ftp服务（Very-Secure-FTP-Daemons-vsftpd）安装"><a href="#ftp服务（Very-Secure-FTP-Daemons-vsftpd）安装" class="headerlink" title="ftp服务（Very Secure FTP Daemons, vsftpd）安装"></a>ftp服务（Very Secure FTP Daemons, vsftpd）安装</h1><ol>
+<li><p>yum下载</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> yum install vsftpd</span><br></pre></td></tr></table></figure></li>
+<li><p>开启ftp服务</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看ftp服务的状态</span></span><br><span class="line"><span class="built_in">sudo</span> systemctl status vsftpd <span class="comment"># 此时是inactive(dead)，同时发现CGroup行：</span></span><br><span class="line">                             <span class="comment"># ftp服务守护进程是/usr/sbin/vsftpd，</span></span><br><span class="line">                             <span class="comment"># 配置文件/etc/vsftpd/vsftpd.conf </span></span><br><span class="line"><span class="built_in">sudo</span> systemctl start vsftpd <span class="comment"># 打开ftp服务</span></span><br><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">enable</span> vsftpd <span class="comment"># 下次开机自己启动</span></span><br></pre></td></tr></table></figure></li>
+<li><p>防火墙开通21端口</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#为ftp开通21号端口</span></span><br><span class="line"><span class="built_in">sudo</span> firewall-cmd --zone=public --permanent --add-port=21/tcp</span><br><span class="line"><span class="built_in">sudo</span> firewall-cmd --zone=public --permanent --add-service=ftp</span><br><span class="line"><span class="built_in">sudo</span> firewall-cmd --reload <span class="comment"># 重启防火墙</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="ftp客户端安装"><a href="#ftp客户端安装" class="headerlink" title="ftp客户端安装"></a>ftp客户端安装</h1><p>rhel8版本下，ftp客户端默认未安装，可在shell中进行安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ftp <span class="comment"># 仅输入ftp</span></span><br><span class="line">std输出&gt;&gt;bash: ftp: <span class="built_in">command</span> not found...</span><br><span class="line">std输出&gt;&gt;Install package <span class="string">&#x27;ftp&#x27;</span> to provide <span class="built_in">command</span> <span class="string">&#x27;ftp&#x27;</span>? [N/y] y  <span class="comment">#后面就自动安装了</span></span><br></pre></td></tr></table></figure>
+
+<p>通过以上步骤就能使用ftp服务了，但是这样默认使用本地用户，为了提高系统的安全性，避免直接暴露系统账户，可以采用建立ftp虚拟用户的方式，满足不同场景的需求。</p>
+<h1 id="虚拟用户配置"><a href="#虚拟用户配置" class="headerlink" title="虚拟用户配置"></a>虚拟用户配置</h1><h1 id="安装必要的软件"><a href="#安装必要的软件" class="headerlink" title="安装必要的软件"></a>安装必要的软件</h1><p>确保已经安装了 <code>vsftpd</code>​ 和 <code>db_util</code>​ 工具（用于管理虚拟用户数据库）。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> yum install libdb-utils</span><br></pre></td></tr></table></figure>
+
+<h2 id="创建虚拟用户数据库"><a href="#创建虚拟用户数据库" class="headerlink" title="创建虚拟用户数据库"></a>创建虚拟用户数据库</h2><ol>
+<li><p>编辑一个文本文件，记录用户的用户名和密码。</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> vim /etc/vsftpd/virtual_users.txt</span><br><span class="line"></span><br><span class="line"><span class="comment">#增加以下内容</span></span><br><span class="line">user1</span><br><span class="line">password1</span><br><span class="line">user2</span><br><span class="line">password2</span><br><span class="line">...</span><br></pre></td></tr></table></figure></li>
+<li><p>转换为数据库格式</p>
+<p> 使用 <code>db_load</code>​ 工具将上述文件转换为 Berkeley DB 格式：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> db_load -T -t <span class="built_in">hash</span> -f /etc/vsftpd/virtual_users.txt /etc/vsftpd/virtual_users.db</span><br></pre></td></tr></table></figure>
+
+<p> 确保数据库文件的权限：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">chmod</span> 600 /etc/vsftpd/virtual_users.db</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="配置pam认证"><a href="#配置pam认证" class="headerlink" title="配置pam认证"></a>配置pam认证</h2><p>修改PAM 配置文件（通常位于 <code>/etc/pam.d/vsftpd</code>​ 或 <code>/etc/pam.d/ftp</code>​）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#备份</span></span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">cp</span> /etc/pam.d/vsftpd /etc/pam.d/vsftpd.bk</span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span> vim /etc/pam.d/vsftpd</span><br><span class="line"><span class="comment">#改为以下内容</span></span><br><span class="line">auth required /lib64/security/pam_userdb.so db=/etc/vsftpd/virtual_users</span><br><span class="line">account required /lib64/security/pam_userdb.so db=/etc/vsftpd/virtual_users</span><br></pre></td></tr></table></figure>
+
+<h1 id="配置vsftpd"><a href="#配置vsftpd" class="headerlink" title="配置vsftpd"></a>配置vsftpd</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#编辑vsftpd配置文件</span></span><br><span class="line"><span class="built_in">sudo</span> vim /etc/vsftpd/vsftpd.conf</span><br><span class="line"></span><br><span class="line"><span class="comment">#确保包含以下内容</span></span><br><span class="line"><span class="comment"># 匿名和本地系统用户必须有一个为YES</span></span><br><span class="line">anonymous_enable=NO <span class="comment"># 若为YES，则登录用户名：anonymous，无需密码。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#本地系统用户</span></span><br><span class="line">local_enable=NO <span class="comment"># 启用才能启动虚拟用户</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 启用虚拟用户支持</span></span><br><span class="line">guest_enable=YES</span><br><span class="line">guest_username=ftp <span class="comment"># 此处为宿主用户，默认使用ftp自带的用户</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#写权限</span></span><br><span class="line">write_enable=YES</span><br><span class="line"></span><br><span class="line"><span class="comment">#虚拟用户的根目录，默认为/var/ftp/，若要更改则需以下设置</span></span><br><span class="line">chroot_local_user=YES <span class="comment"># 启用虚拟用户的 chroot 限制</span></span><br><span class="line">user_sub_token=<span class="variable">$USER</span> <span class="comment"># 设置多个虚拟用户占位符</span></span><br><span class="line">local_root=/home/ftp/<span class="variable">$USER</span> <span class="comment"># 设置到创建好的ftp目录下</span></span><br><span class="line">allow_writeable_chroot=YES <span class="comment"># 若不加此则报错：</span></span><br><span class="line">                           <span class="comment"># vsftpd: refusing to run with writable root inside chroot()</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置 PAM 配置文件</span></span><br><span class="line">pam_service_name=vsftpd</span><br></pre></td></tr></table></figure>
+
+<h2 id="创建虚拟用户的目录"><a href="#创建虚拟用户的目录" class="headerlink" title="创建虚拟用户的目录"></a>创建虚拟用户的目录</h2><ol>
+<li><p>创建一个根目录，并为虚拟用户设置独立的子目录：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">mkdir</span> -p /home/ftp/user1</span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">mkdir</span> -p /home/ftp/user2</span><br></pre></td></tr></table></figure></li>
+<li><p>修改目录权限，使 <code>vsftpd</code>​ 能够访问：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">chown</span> ftp:ftp /home/ftp/user1</span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">chown</span> ftp:ftp /home/ftp/user2</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="重启-vsftpd-服务"><a href="#重启-vsftpd-服务" class="headerlink" title="重启 vsftpd 服务"></a>重启 vsftpd 服务</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl restart vsftpd</span><br></pre></td></tr></table></figure>
+
+<h1 id="附加配置（可选）"><a href="#附加配置（可选）" class="headerlink" title="附加配置（可选）"></a>附加配置（可选）</h1><p><strong>日志记录</strong>： 在 <code>vsftpd.conf</code>​ 中启用日志记录：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xferlog_enable=YES</span><br><span class="line">xferlog_file=/var/log/vsftpd.log</span><br></pre></td></tr></table></figure>
+
+<p>‍</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
