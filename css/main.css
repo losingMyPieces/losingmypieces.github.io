@@ -1101,7 +1101,7 @@ pre code {
   margin: 0;
 }
 .site-subtitle {
-  color: #ddd;
+  color: #000;
   font-size: 0.8125em;
   margin: 10px 10px 0;
 }
@@ -1110,7 +1110,7 @@ pre code {
 .use-motion .custom-logo-image {
   opacity: 0;
   position: relative;
-  top: -10px;
+  top: 10px;
 }
 .site-nav-toggle,
 .site-nav-right {
@@ -1199,7 +1199,7 @@ pre code {
 }
 @media (max-width: 991px) {
   .sidebar {
-    left: -320px;
+    left: -360px;
   }
   .sidebar-active .sidebar {
     left: 0;
@@ -1214,7 +1214,7 @@ pre code {
     top: 0;
     transition: 0.2s ease-out;
     transition-property: left, right;
-    width: 320px;
+    width: 360px;
     z-index: 20;
   }
   .sidebar a {
@@ -1236,7 +1236,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #9cabff;
+    background: #f0d044;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -2415,7 +2415,7 @@ header.header {
 .main-inner {
   border-radius: initial;
   box-sizing: border-box;
-  width: calc(100% - 252px);
+  width: calc(100% - 282px);
 }
 @media (max-width: 991px) {
   .main-inner {
@@ -2424,7 +2424,7 @@ header.header {
   }
 }
 .footer-inner {
-  padding-left: 252px;
+  padding-left: 282px;
 }
 @media (max-width: 991px) {
   .footer-inner {
@@ -2434,7 +2434,7 @@ header.header {
   }
 }
 .column {
-  width: 240px;
+  width: 270px;
 }
 @media (max-width: 991px) {
   .column {
@@ -2442,12 +2442,29 @@ header.header {
   }
 }
 .site-brand-container {
-  background: var(--theme-color);
+  background: url("/uploads/custom-logo.png");
+  background-position: 70% 20%;
+  position: relative; /* 设置相对定位 */
+  background-size: cover;
+  display: flex;
+  flex-shrink: 0;
+  padding: 0 10px;
 }
 @media (max-width: 991px) {
   .site-nav-on .site-brand-container {
     box-shadow: 0 0 16px rgba(0,0,0,0.5);
   }
+}
+.site-brand-container::before {
+  content: ''; /* 必须添加，否则伪元素不起作用 */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255,255,255,0.05); /* 半透明白色叠加 */
+  z-index: 0; /* 保证它在背景图片上 */
+  pointer-events: none; /* 不干扰鼠标事件 */
 }
 .site-meta {
   padding: 20px 0;
@@ -2500,7 +2517,6 @@ header.header {
   margin-left: auto;
 }
 .menu .menu-item a.menu-item-active::after {
-  background: #bbb;
   border-radius: 50%;
   content: ' ';
   height: 6px;
@@ -2696,6 +2712,13 @@ header.header {
   .comments {
     padding: 10px 12px;
   }
+}
+body {
+  background: url("/uploads/windySky.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: 25% 25%;
 }
 @media (min-width: 992px) and (max-width: 991px) {
   .sidebar {
