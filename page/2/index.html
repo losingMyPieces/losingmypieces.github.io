@@ -19,30 +19,23 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.21.0","exturl":false,"sidebar":{"position":"left","width_expanded":360,"width_dual_column":270,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="Linux系统登录需要用户名和密码，但是不同的用户拥有不同的权限。有一位特殊的存在：root—— 系统管理员，它在系统中拥有全部权限，可以管理用户的文件权限、目录权限等等。接下来就围绕账号与群组进行具体讨论。 Linux账号与群组UID和GID对于用户，记住Linux系统的用户名和密码足矣，然而对于Linux主机，则需要记住用户的UID（User ID）和密码。首先我们要有一个概念：Linux系统">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Linux账号和群组">
-<meta property="og:url" content="http://example.com/2024/10/29/Linux-ug/index.html">
+    <meta property="og:type" content="website">
+<meta property="og:title" content="zero">
+<meta property="og:url" content="http://example.com/page/2/index.html">
 <meta property="og:site_name" content="zero">
-<meta property="og:description" content="Linux系统登录需要用户名和密码，但是不同的用户拥有不同的权限。有一位特殊的存在：root—— 系统管理员，它在系统中拥有全部权限，可以管理用户的文件权限、目录权限等等。接下来就围绕账号与群组进行具体讨论。 Linux账号与群组UID和GID对于用户，记住Linux系统的用户名和密码足矣，然而对于Linux主机，则需要记住用户的UID（User ID）和密码。首先我们要有一个概念：Linux系统">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2024/10/29/Linux-ug/img12-20241017163842-kxs91dn.png">
-<meta property="article:published_time" content="2024-10-29T01:08:03.000Z">
-<meta property="article:modified_time" content="2024-10-29T01:14:25.630Z">
 <meta property="article:author" content="zyming">
-<meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2024/10/29/Linux-ug/img12-20241017163842-kxs91dn.png">
 
 
-<link rel="canonical" href="http://example.com/2024/10/29/Linux-ug/">
+<link rel="canonical" href="http://example.com/page/2/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2024/10/29/Linux-ug/","path":"2024/10/29/Linux-ug/","title":"Linux账号和群组"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"page/2/index.html","title":""}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Linux账号和群组 | zero</title>
+<title>zero</title>
   
 
 
@@ -75,7 +68,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <p class="site-title">zero</p>
+      <h1 class="site-title">zero</h1>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">zero implies everything</p>
@@ -102,7 +95,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <div class="sidebar-inner sidebar-overview-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -115,7 +108,6 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux%E8%B4%A6%E5%8F%B7%E4%B8%8E%E7%BE%A4%E7%BB%84"><span class="nav-number">1.</span> <span class="nav-text">Linux账号与群组</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#UID%E5%92%8CGID"><span class="nav-number">1.1.</span> <span class="nav-text">UID和GID</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E8%B4%A6%E5%8F%B7%E4%B8%8E%E7%BE%A4%E7%BB%84"><span class="nav-number">1.2.</span> <span class="nav-text">用户账号与群组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#etc-passwd%E7%9A%84%E6%AF%8F%E4%B8%80%E8%A1%8C%E4%BB%A3%E8%A1%A8%E4%BA%86%E4%B8%80%E4%B8%AA%E7%94%A8%E6%88%B7%EF%BC%8C%E8%80%8C%E5%85%B6%E4%B8%AD%E7%9A%84%E6%9F%90%E4%BA%9B%E4%B8%BA%E7%B3%BB%E7%BB%9F%E7%94%A8%E6%88%B7%EF%BC%8C%E4%BE%8B%E5%A6%82bin%EF%BC%8Cdeamon%E7%AD%89%E7%AD%89%E3%80%82"><span class="nav-number">1.2.1.</span> <span class="nav-text">&#x2F;etc&#x2F;passwd的每一行代表了一个用户，而其中的某些为系统用户，例如bin，deamon等等。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#etc-shadow%E7%9A%84%E6%AF%8F%E4%B8%80%E8%A1%8C%E5%AD%98%E5%82%A8%E4%BA%86%E5%AF%86%E7%A0%81%E7%9B%B8%E5%85%B3%E7%9A%84%E5%AD%97%E6%AE%B5%EF%BC%8C%E5%9B%BA%E5%AE%9A%E6%A0%BC%E5%BC%8F%E4%B8%BA%EF%BC%9A"><span class="nav-number">1.2.2.</span> <span class="nav-text">&#x2F;etc&#x2F;shadow的每一行存储了密码相关的字段，固定格式为：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#etc-group%E7%9A%84%E6%AF%8F%E4%B8%80%E8%A1%8C%E4%BB%A3%E8%A1%A8%E4%B8%80%E4%B8%AA%E7%BE%A4%E7%BB%84%EF%BC%8C%E6%A0%BC%E5%BC%8F%E4%B8%BA%EF%BC%9A"><span class="nav-number">1.2.3.</span> <span class="nav-text">&#x2F;etc&#x2F;group的每一行代表一个群组，格式为：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B4%A6%E5%8F%B7%E7%9B%B8%E5%85%B3%E6%96%87%E4%BB%B6%E4%B9%8B%E9%97%B4%E7%9A%84UID-GID%E4%B8%8E%E5%AF%86%E7%A0%81%E7%9B%B8%E5%85%B3%E6%80%A7%E7%A4%BA%E6%84%8F%E5%9B%BE"><span class="nav-number">1.2.4.</span> <span class="nav-text">账号相关文件之间的UID&#x2F;GID与密码相关性示意图</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BE%A4%E7%BB%84"><span class="nav-number">1.3.</span> <span class="nav-text">群组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#etc-gshadow%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.3.1.</span> <span class="nav-text">&#x2F;etc&#x2F;gshadow格式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.4.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B4%A6%E5%8F%B7%E5%92%8C%E7%BE%A4%E7%BB%84%E7%AE%A1%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">账号和群组管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E5%A2%9E%E8%B4%A6%E5%8F%B7"><span class="nav-number">2.1.</span> <span class="nav-text">新增账号</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#etc-default-useradd"><span class="nav-number">2.1.1.</span> <span class="nav-text">&#x2F;etc&#x2F;default&#x2F;useradd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E8%AF%A6%E7%BB%86%E5%9C%B0%E6%98%BE%E7%A4%BA%E5%AF%86%E7%A0%81%E5%8F%82%E6%95%B0"><span class="nav-number">2.1.2.</span> <span class="nav-text">更详细地显示密码参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E8%B4%A6%E5%8F%B7%E4%BF%A1%E6%81%AF"><span class="nav-number">2.2.</span> <span class="nav-text">修改账号信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E8%B4%A6%E5%8F%B7"><span class="nav-number">2.3.</span> <span class="nav-text">删除账号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E5%8A%9F%E8%83%BD"><span class="nav-number">2.4.</span> <span class="nav-text">用户功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A2%9E%E5%88%A0%E6%94%B9%E7%BE%A4%E7%BB%84"><span class="nav-number">2.5.</span> <span class="nav-text">增删改群组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%90%E5%91%98%E7%AE%A1%E7%90%86"><span class="nav-number">2.5.1.</span> <span class="nav-text">成员管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%B9%E5%8F%98%E6%96%87%E4%BB%B6%E6%89%80%E5%B1%9E%E7%BB%84"><span class="nav-number">2.5.2.</span> <span class="nav-text">改变文件所属组</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93-1"><span class="nav-number">2.6.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -170,17 +162,16 @@
 
     </div>
 
-    <div class="main-inner post posts-expand">
+    <div class="main-inner index posts-expand">
 
-
-  
+    
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2024/10/29/Linux-ug/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -194,13 +185,13 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Linux账号和群组 | zero">
+      <meta itemprop="name" content="undefined | zero">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          Linux账号和群组
-        </h1>
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/10/29/Linux-ug/" class="post-title-link" itemprop="url">Linux账号和群组</a>
+        </h2>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -223,7 +214,8 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>Linux系统登录需要用户名和密码，但是不同的用户拥有不同的权限。有一位特殊的存在：<strong>root——</strong> 系统管理员，它在系统中拥有全部权限，可以管理用户的文件权限、目录权限等等。接下来就围绕账号与群组进行具体讨论。</p>
+    <div class="post-body" itemprop="articleBody">
+          <p>Linux系统登录需要用户名和密码，但是不同的用户拥有不同的权限。有一位特殊的存在：<strong>root——</strong> 系统管理员，它在系统中拥有全部权限，可以管理用户的文件权限、目录权限等等。接下来就围绕账号与群组进行具体讨论。</p>
 <h1 id="Linux账号与群组"><a href="#Linux账号与群组" class="headerlink" title="Linux账号与群组"></a>Linux账号与群组</h1><h2 id="UID和GID"><a href="#UID和GID" class="headerlink" title="UID和GID"></a>UID和GID</h2><p>对于用户，记住Linux系统的用户名和密码足矣，然而对于Linux主机，则需要记住用户的UID（User ID）和密码。首先我们要有一个概念：<strong>Linux系统由文件组成</strong>，<strong>包括目录也是文件组成。</strong> Linux规定所有的配置文件都保存在&#x2F;etc目录下，而每个用户名和UID的对应则保存在&#x2F;etc&#x2F;passwd文件中。以前用户的密码也保存在&#x2F;etc&#x2F;passwd文件中，但是目前用户的密码在&#x2F;etc&#x2F;shadow文件中密文保存。</p>
 <p>每个用户都必须属于一个组，在未指定所属组的情况下，用户的组为自己本身。同样，组由于GID（Group ID）被Linux主机记住，组名和GID的对应保存在&#x2F;etc&#x2F;group文件中。</p>
 <p>每个Linux文件都属于用户和组，Linux系统依据&#x2F;etc&#x2F;passwd和&#x2F;etc&#x2F;group中的内容，找到UID&#x2F;GID对应的用户名和组名显示出来。因此，若随意更改&#x2F;etc&#x2F;passwd中用户的UID，会导致此用户的文件无法显示名字，并且&#x2F;home&#x2F;用户 无法登入（因为UID更改，而家目录所属UID未变）。</p>
@@ -308,6 +300,7 @@
 <h2 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h2><p>给出了关于账号和群组的增删查改相关的命令。</p>
 <p>‍</p>
 
+      
     </div>
 
     
@@ -315,24 +308,8 @@
     
 
     <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/linux/" rel="tag"># linux</a>
-          </div>
-
-        
-
-          <div class="post-nav">
-            <div class="post-nav-item">
-                <a href="/2024/10/17/Linux-crontab/" rel="prev" title="Linux crontab">
-                  <i class="fa fa-angle-left"></i> Linux crontab
-                </a>
-            </div>
-            <div class="post-nav-item">
-                <a href="/2024/11/01/Linux-lvm/" rel="next" title="LVM磁盘空间管理">
-                  LVM磁盘空间管理 <i class="fa fa-angle-right"></i>
-                </a>
-            </div>
-          </div>
+        <div class="post-eof"></div>
+      
     </footer>
   </article>
 </div>
@@ -340,7 +317,393 @@
 
 
 
+    
 
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/10/17/Linux-crontab/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zyming">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zero">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | zero">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/10/17/Linux-crontab/" class="post-title-link" itemprop="url">Linux crontab</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-10-17 10:46:25 / 修改时间：14:37:07" itemprop="dateCreated datePublished" datetime="2024-10-17T10:46:25+08:00">2024-10-17</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>​<code>crontab</code>​ 是一个用于管理用户的定时任务调度工具。它允许用户设置在特定时间自动运行的命令或脚本，常用于定期执行备份、系统监控、数据处理等任务。</p>
+<h1 id="atd-–-执行一次性命令的守护进程"><a href="#atd-–-执行一次性命令的守护进程" class="headerlink" title="atd – 执行一次性命令的守护进程"></a>atd – 执行一次性命令的守护进程</h1><p>生活中，我们有太多场景需要使用到闹钟，比如早上 7 点起床，下午 4 点开会，晚上 8 点购物，等等。</p>
+<p>在 Linux 系统里，我们同样也有类似的需求。比如我们想在凌晨 1 点将文件上传服务器，或者在晚上 10 点确认系统状态，等等。</p>
+<p>但我们不可能一直守在电脑前，毕竟我们也需要下班&#x2F;睡觉，还要陪对象（new一个也行）。而且即使在上班期间，如果到点了还需要人工操作，未免效率太低了。</p>
+<p>​<code>at</code>​ 命令就是为这个需求而诞生的。使用 <code>at</code>​ 命令，你可以在特定时间自动完成你所设定的任务，也可以实现自动化，非常方便快捷！</p>
+<h2 id="at安装"><a href="#at安装" class="headerlink" title="at安装"></a>at安装</h2><p>一般来讲，大部分 Linux 发行版都已经安装了 <code>at</code>​ 命令，不确定的话可以使用 <code>at -V</code>​ 命令查看，如果有版本返回，说明就可以正常使用 <code>at</code>​ 命令。</p>
+<p>at -V # 查看版本</p>
+<h2 id="atd服务启动"><a href="#atd服务启动" class="headerlink" title="atd服务启动"></a>atd服务启动</h2><p>你可以使用 <code>systemctl</code>​ 命令启用 <code>atd</code>​ 服务并将它们设置为从现在开始自动启动</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">enable</span> --now atd</span><br></pre></td></tr></table></figure>
+
+<h2 id="at命令基本用法"><a href="#at命令基本用法" class="headerlink" title="at命令基本用法"></a>at命令基本用法</h2><ul>
+<li><p>语法</p>
+<p>at [options] [time]</p>
+</li>
+<li><p>选项</p>
+<p>-f 指定包含具体指令的任务文件</p>
+<p>-q 指定新任务的队列名称</p>
+<p>-l 显示待执行任务的列表</p>
+<p>-d 删除待执行的任务</p>
+<p>-m 任务执行完后向用户发送邮件</p>
+</li>
+<li><p>time：时间格式</p>
+<p>HH:MM</p>
+<p>HH:MM YYYY-MM-DD 或者 HH:MM MM&#x2F;DD&#x2F;YYYY</p>
+<p>HH:MM[am|pm] [month] [date]</p>
+<p>HH:MM[am|pm] + number [ minutes | hours | days | weeks | months | years ]</p>
+</li>
+</ul>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><ol>
+<li>echo “echo ‘hello’ &gt;&gt; &#x2F;home&#x2F;zyming&#x2F;at-test.txt” | at 3:30 am 10&#x2F;01&#x2F;2024 或者 echo “echo ‘hello’ &gt;&gt; &#x2F;home&#x2F;zyming&#x2F;at-test.txt” | at 3:30 am 2024-10-01</li>
+</ol>
+<h2 id="使用-at-命令交互性安排任务"><a href="#使用-at-命令交互性安排任务" class="headerlink" title="使用 at 命令交互性安排任务"></a>使用 at 命令交互性安排任务</h2><p>at 11:00 am</p>
+<blockquote>
+<p>echo “hello” &gt;&gt; &#x2F;home&#x2F;zyming&#x2F;at-test.txt</p>
+</blockquote>
+<p>ctrl+d退出交互环境</p>
+<h2 id="使用-at-命令安排任务"><a href="#使用-at-命令安排任务" class="headerlink" title="使用 at 命令安排任务"></a>使用 at 命令安排任务</h2><p>echo “echo ‘hello again’ &gt;&gt; &#x2F;home&#x2F;zyming&#x2F;at-test.txt” | at now + 1 minutes</p>
+<h2 id="查看-at-任务队列"><a href="#查看-at-任务队列" class="headerlink" title="查看 at 任务队列"></a>查看 at 任务队列</h2><p>at -l &lt;&#x3D;&gt; atq</p>
+<h3 id="从任务队列中删除任务"><a href="#从任务队列中删除任务" class="headerlink" title="从任务队列中删除任务"></a>从任务队列中删除任务</h3><p>atrm &lt;任务编号&gt;</p>
+<h2 id="根据at任务列表选择删除的内容"><a href="#根据at任务列表选择删除的内容" class="headerlink" title="根据at任务列表选择删除的内容"></a>根据at任务列表选择删除的内容</h2><p>atq &amp;&amp; read -p “输入待查看at任务编号：” n &amp;&amp; atrm $n</p>
+<h2 id="查看at任务内容"><a href="#查看at任务内容" class="headerlink" title="查看at任务内容"></a>查看at任务内容</h2><p>at -c &lt;任务编号&gt; | tail -n +71 | head -n -2</p>
+<p>或者</p>
+<h3 id="通过管理员权限查看-var-spool-at中保存的内容"><a href="#通过管理员权限查看-var-spool-at中保存的内容" class="headerlink" title="通过管理员权限查看 &#x2F;var&#x2F;spool&#x2F;at中保存的内容"></a>通过管理员权限查看 &#x2F;var&#x2F;spool&#x2F;at中保存的内容</h3><p>(sudo ls &#x2F;var&#x2F;spool&#x2F;at | awk ‘{print NR “：” 1}’) &amp;&amp; read -p “需要查看第几个at任务：” n &amp;&amp; sudo tail -n+71 &#x2F;var&#x2F;spool&#x2F;at&#x2F;(sudo ls &#x2F;var&#x2F;spool&#x2F;at | head -n $n | tail -n 1)| head -n -2</p>
+<h2 id="根据at任务列表选择查看的内容"><a href="#根据at任务列表选择查看的内容" class="headerlink" title="根据at任务列表选择查看的内容"></a>根据at任务列表选择查看的内容</h2><p>atq &amp;&amp; read -p “输入待查看at任务编号：” n &amp;&amp;  (at -c $n | tail -n +71 | head -n -2)</p>
+<h1 id="batch-–系统空闲时执行的后台任务"><a href="#batch-–系统空闲时执行的后台任务" class="headerlink" title="batch –系统空闲时执行的后台任务"></a>batch –系统空闲时执行的后台任务</h1><p>batch是利用at来进行指令下达的，它会在cpu的工作负载小于0.8时，马上执行用户下达的工作任务。</p>
+<ol>
+<li>uptime # 查看当前负载（load average）</li>
+<li>bc -lq &lt;&lt;&lt; “scale&#x3D;100000; 4*a(1)” &amp;</li>
+<li>bc -lq &lt;&lt;&lt; “scale&#x3D;100000; 4*a(1)” &amp; # 小于0.8，则继续增加负载</li>
+<li>uptime # 查看当前负载（load average）</li>
+<li>batch &gt; &#x2F;usr&#x2F;bin&#x2F;updatedb</li>
+<li>date; atq # 查看此时是否执行（当前时间超过计划时间）</li>
+<li>jobs &gt; kill -9 %?</li>
+<li>uptime;atq # 查看执行与否</li>
+</ol>
+<h1 id="crond-–-执行周期性命令的守护进程"><a href="#crond-–-执行周期性命令的守护进程" class="headerlink" title="crond – 执行周期性命令的守护进程"></a>crond – 执行周期性命令的守护进程</h1><h2 id="crontab安装与检查"><a href="#crontab安装与检查" class="headerlink" title="crontab安装与检查"></a>crontab安装与检查</h2><p>sudo yum list crontabs # 检查是否安装</p>
+<p>crontab -V # 查看版本</p>
+<p>sudo yum install crontab</p>
+<h2 id="crontab服务启动与关闭"><a href="#crontab服务启动与关闭" class="headerlink" title="crontab服务启动与关闭"></a>crontab服务启动与关闭</h2><p>systemctl start crond # 启动</p>
+<p>systemctl stop crond # 关闭</p>
+<p>systemctl enable crond # 开机自启</p>
+<h2 id="全局配置文件（crontab每分钟检测一次-etc-crontab和-var-spool-cron）"><a href="#全局配置文件（crontab每分钟检测一次-etc-crontab和-var-spool-cron）" class="headerlink" title="全局配置文件（crontab每分钟检测一次&#x2F;etc&#x2F;crontab和&#x2F;var&#x2F;spool&#x2F;cron）"></a>全局配置文件（crontab每分钟检测一次&#x2F;etc&#x2F;crontab和&#x2F;var&#x2F;spool&#x2F;cron）</h2><p>cron.hourly # 是每个小时执行一次的job</p>
+<p>cron.daily # 是每天执行一次的job</p>
+<p>cron.monthly # 是每月执行一次的job</p>
+<p>cron.d # 是系统自动定期需要做的任务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/cron.d/0hourly</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Run the hourly jobs</span></span><br><span class="line">SHELL=/bin/bash</span><br><span class="line">PATH=/sbin:/bin:/usr/sbin:/usr/bin</span><br><span class="line">MAILTO=root</span><br><span class="line">01 * * * * root run-parts /etc/cron.hourly</span><br></pre></td></tr></table></figure>
+
+<p>crontab # 是设定定时任务执行文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/crontab</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">SHELL=/bin/bash</span><br><span class="line">PATH=/sbin:/bin:/usr/sbin:/usr/bin</span><br><span class="line">MAILTO=root</span><br><span class="line"></span><br><span class="line"><span class="comment"># For details see man 4 crontabs</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Example of job definition:</span></span><br><span class="line"><span class="comment"># .---------------- minute (0 - 59)</span></span><br><span class="line"><span class="comment"># |  .------------- hour (0 - 23)</span></span><br><span class="line"><span class="comment"># |  |  .---------- day of month (1 - 31)</span></span><br><span class="line"><span class="comment"># |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...</span></span><br><span class="line"><span class="comment"># |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat</span></span><br><span class="line"><span class="comment"># |  |  |  |  |</span></span><br><span class="line"><span class="comment"># *  *  *  *  * user-name  command to be executed</span></span><br></pre></td></tr></table></figure>
+
+<p>crontab.deny # 文件用于控制不让哪些用户使用crontab</p>
+<h2 id="用户配置文件"><a href="#用户配置文件" class="headerlink" title="用户配置文件"></a>用户配置文件</h2><p>每个用户都有自己的cron配置文件，通过crontab -e就可以编辑。</p>
+<p><a target="_blank" rel="noopener" href="https://crontab.guru/">时间配置测试网站</a></p>
+<p><img src="/2024/10/17/Linux-crontab/image-20240929101230-geczmu2.png" alt="image-geczmu2"></p>
+<p>星号（）：代表所有可能的值，例如month字段如果是星号，则表示在满足其它字段的制约条件后每月都执行该命令操作。<br>逗号（,）：可以用逗号隔开的值指定一个列表范围，例如，“1,2,5,7,8,9”<br>中杠（-）：可以用整数之间的中杠表示一个整数范围，例如“2-6”表示“2,3,4,5,6”<br>正斜线（&#x2F;）：可以用正斜线指定时间的间隔频率，例如“0-23&#x2F;2”表示每两小时执行一次。同时正斜线可以和星号一起使用，例如&#x2F;10，如果用在minute字段，表示每十分钟执行一次。</p>
+<h2 id="定时任务实例"><a href="#定时任务实例" class="headerlink" title="定时任务实例"></a>定时任务实例</h2><ol>
+<li><p>每月每天凌晨3点30分和中午12点30分执行test.sh脚本</p>
+<p> 30 3,12 * * * &#x2F;home&#x2F;test.sh</p>
+</li>
+<li><p>每月每天每隔6小时的每30分钟执行test.sh脚本</p>
+<p> &#x2F;30 &#x2F;6 * * * &#x2F;home&#x2F;test.sh</p>
+</li>
+<li><p>每月每天早上8点到下午18点每隔2小时的每30分钟执行test.sh脚本</p>
+<p> &#x2F;30 8-18&#x2F;2 * * * &#x2F;home&#x2F;test.sh</p>
+</li>
+<li><p>每月每天晚上21点30分执行test.sh脚本</p>
+<p> 30 21 * * * &#x2F;home&#x2F;test.sh</p>
+</li>
+<li><p>每月1号、10号、22号凌晨4点45分执行test.sh脚本</p>
+<p> 45 4 1,10,22 * * &#x2F;home&#x2F;test.sh</p>
+</li>
+</ol>
+<p><strong>注意</strong></p>
+<p> 某些时候天和星期一起设置会冲突</p>
+<h2 id="查询-删除当前用户定时任务"><a href="#查询-删除当前用户定时任务" class="headerlink" title="查询&#x2F;删除当前用户定时任务"></a>查询&#x2F;删除当前用户定时任务</h2><p>crontab -l &#x2F; crontab -r</p>
+<h1 id="可唤醒停机期间的工作任务（anacron）"><a href="#可唤醒停机期间的工作任务（anacron）" class="headerlink" title="可唤醒停机期间的工作任务（anacron）"></a>可唤醒停机期间的工作任务（anacron）</h1><ol>
+<li><p>目的</p>
+<p> anacron不是crontab的替代物，它是一个程序，针对非24小时一直启动linux系统的crontab执行，以及由于特殊原因超过预计时间没被执行的定时任务而提出</p>
+</li>
+</ol>
+<h2 id="anacron与-etc-anacrontab"><a href="#anacron与-etc-anacrontab" class="headerlink" title="anacron与&#x2F;etc&#x2F;anacrontab"></a>anacron与&#x2F;etc&#x2F;anacrontab</h2><p>anacron是一个程序，放到了&#x2F;etc&#x2F;cron.hourly，得以每个小时运行一次。</p>
+<h2 id="anacrontab的执行流程（以cron-daily为例）"><a href="#anacrontab的执行流程（以cron-daily为例）" class="headerlink" title="anacrontab的执行流程（以cron.daily为例）"></a>anacrontab的执行流程（以cron.daily为例）</h2><ol>
+<li>分析&#x2F;etc&#x2F;anacrontab，得到cron.dailly的执行周期为1天；</li>
+<li>由&#x2F;var&#x2F;spool&#x2F;cron.daily得到上次执行anacrontab的时间戳；</li>
+<li>若该时间戳与目前时间相差超过了1天，那么准备执行指令；</li>
+<li>根据&#x2F;etc&#x2F;anacrontab中设定的delay in minutes和START_HOURS_RANGE&#x3D;3-22，得出指令的运行时间应当是在当天的3:00到22:00之间，每个小时的前五分钟内随机执行，若不在此时间范围以内，则在第二天的3:00开始执行；</li>
+<li>执行完 run-parts &#x2F;etc&#x2F;cron.daily，anacrontab整个流程结束。</li>
+</ol>
+<p>总结：anacrontab每个小时去检测时间戳的差距，可以使得cron.daily中的任务每天执行一次，而由于其执行周期为1小时，因此开机后的1小时左右系统会进行一定的检测工作。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/10/16/hello-world/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zyming">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zero">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | zero">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/10/16/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-10-16 09:45:40" itemprop="dateCreated datePublished" datetime="2024-10-16T09:45:40+08:00">2024-10-16</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/07/24/Linux-version/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zyming">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zero">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | zero">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/07/24/Linux-version/" class="post-title-link" itemprop="url">Linux版本</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-07-24 16:02:34" itemprop="dateCreated datePublished" datetime="2024-07-24T16:02:34+08:00">2024-07-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-11-29 16:18:26" itemprop="dateModified" datetime="2024-11-29T16:18:26+08:00">2024-11-29</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="内核版本"><a href="#内核版本" class="headerlink" title="内核版本"></a>内核版本</h1><p>Linux内核版本：x.y.r（主版本号.<strong>次版本号</strong>.修正版本号）次版本号为<strong>奇数</strong>，则内核版本为<strong>测试版本</strong>，次版本号为<strong>偶数</strong>，则内核版本为<strong>稳定版本</strong></p>
+<h2 id="查看指令"><a href="#查看指令" class="headerlink" title="查看指令"></a>查看指令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#完整信息</span></span><br><span class="line"><span class="built_in">cat</span> /proc/version</span><br><span class="line"></span><br><span class="line"><span class="comment">#版本号</span></span><br><span class="line"><span class="built_in">uname</span> -r</span><br></pre></td></tr></table></figure>
+
+<h1 id="发行版本"><a href="#发行版本" class="headerlink" title="发行版本"></a>发行版本</h1><table>
+<thead>
+<tr>
+<th>发行版本</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>RHEL</td>
+<td>Redhat公司商业化运作发行的版本</td>
+</tr>
+<tr>
+<td>SuSE</td>
+<td>流行于欧洲的多语言版本</td>
+</tr>
+<tr>
+<td>CentOS</td>
+<td>模仿RHEL的免费发行版本，配置文件、配置名称、路径与其一致</td>
+</tr>
+<tr>
+<td>openSuSE</td>
+<td>模仿SuSE的免费发行版本</td>
+</tr>
+<tr>
+<td>Debian</td>
+<td>一种流行的非商业性质的发行版本</td>
+</tr>
+<tr>
+<td>ubuntu</td>
+<td>Debian的精简版本</td>
+</tr>
+<tr>
+<td>Fedora</td>
+<td>Redhat9.0以后延续的开发版本，Red Hat Linux的社区支持但受红帽公司赞助</td>
+</tr>
+<tr>
+<td>Kylin</td>
+<td>麒麟操作系统，由中国的操作系统开发团队开发，基于 Ubuntu 定制而来</td>
+</tr>
+</tbody></table>
+<h2 id="查看指令-1"><a href="#查看指令-1" class="headerlink" title="查看指令"></a>查看指令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/os-release</span><br><span class="line">或</span><br><span class="line">lsb_release -a <span class="comment"># 如果提示没有此命令，则首先sudo yum install redhat-lsb</span></span><br></pre></td></tr></table></figure>
+
+<p>‍</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
 
 </div>
   </main>

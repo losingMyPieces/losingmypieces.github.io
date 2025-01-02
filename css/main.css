@@ -1236,7 +1236,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #f0d044;
+    background: #ab55ff;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -2443,11 +2443,9 @@ header.header {
 }
 .site-brand-container {
   background: url("/uploads/custom-logo.png");
-  background-position: 70% 20%;
+  background-position: 25% 25%;
   position: relative; /* 设置相对定位 */
   background-size: cover;
-  display: flex;
-  flex-shrink: 0;
   padding: 0 10px;
 }
 @media (max-width: 991px) {
@@ -2714,7 +2712,7 @@ header.header {
   }
 }
 body {
-  background: url("/uploads/windySky.png");
+  background: url("/uploads/forest.png");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
