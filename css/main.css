@@ -1236,7 +1236,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #df6b36;
+    background: #3c854a;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -2453,6 +2453,13 @@ header.header {
     box-shadow: 0 0 16px rgba(0,0,0,0.5);
   }
 }
+@media (max-width: 768px) {
+  .site-brand-container {
+    background: url("/uploads/hilufei.webp"); /* 使用专为手机优化的图片 */
+    background-attachment: scroll; /* 移动端固定背景可能导致性能问题，改为滚动 */
+    background-size: cover; /* 图片完整显示 */
+  }
+}
 .site-brand-container::before {
   content: ''; /* 必须添加，否则伪元素不起作用 */
   position: absolute;
@@ -2721,8 +2728,7 @@ body {
   body {
     background: url("/uploads/forest-mobile.webp"); /* 使用专为手机优化的图片 */
     background-attachment: scroll; /* 移动端固定背景可能导致性能问题，改为滚动 */
-    background-position: center top; /* 背景定位到顶部中央 */
-    background-size: contain; /* 图片完整显示 */
+    background-size: cover; /* 图片完整显示 */
   }
 }
 @media (min-width: 992px) and (max-width: 991px) {
