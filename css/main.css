@@ -1236,7 +1236,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #dfff9d;
+    background: #570f09;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -1575,8 +1575,8 @@ pre code {
   font-size: 0.8125em;
 }
 .footer {
-  color: #999;
-  font-size: 0.875em;
+  color: #f5f5f5;
+  font-size: $small;
   padding: 20px 0;
   transition: 0.2s ease-in-out;
   transition-property: left, right;
@@ -2728,6 +2728,8 @@ body {
   body {
     background: url("/uploads/forest-mobile.webp"); /* 使用专为手机优化的图片 */
     background-size: cover; /* 图片完整显示 */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
   }
 }
 @media (min-width: 992px) and (max-width: 991px) {
