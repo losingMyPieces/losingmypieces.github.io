@@ -1236,7 +1236,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #ab55ff;
+    background: #df6b36;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -2712,11 +2712,18 @@ header.header {
   }
 }
 body {
-  background: url("/uploads/forest.png");
+  background: url("/uploads/forest.webp");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  background-position: 25% 25%;
+}
+@media (max-width: 768px) {
+  body {
+    background: url("/uploads/forest-mobile.webp"); /* 使用专为手机优化的图片 */
+    background-attachment: scroll; /* 移动端固定背景可能导致性能问题，改为滚动 */
+    background-position: center top; /* 背景定位到顶部中央 */
+    background-size: contain; /* 图片完整显示 */
+  }
 }
 @media (min-width: 992px) and (max-width: 991px) {
   .sidebar {
