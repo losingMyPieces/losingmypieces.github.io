@@ -1236,7 +1236,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #3c854a;
+    background: #dfff9d;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -2727,7 +2727,6 @@ body {
 @media (max-width: 768px) {
   body {
     background: url("/uploads/forest-mobile.webp"); /* 使用专为手机优化的图片 */
-    background-attachment: scroll; /* 移动端固定背景可能导致性能问题，改为滚动 */
     background-size: cover; /* 图片完整显示 */
   }
 }
