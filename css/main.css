@@ -1236,7 +1236,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #1bffac;
+    background: #4ff2ff;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -1586,6 +1586,21 @@ pre code {
   left: 0;
   position: absolute;
   right: 0;
+}
+@media (max-width: 768px) {
+  .footer {
+    color: #999;
+    font-size: $small;
+    padding: 20px 0;
+    transition: 0.2s ease-in-out;
+    transition-property: left, right;
+  }
+  .footer.footer-fixed {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+  }
 }
 .footer-inner {
   box-sizing: border-box;
