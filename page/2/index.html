@@ -120,7 +120,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-count">16</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -163,6 +163,179 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/11/06/Linux-raid/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zyming">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zero">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | zero">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/11/06/Linux-raid/" class="post-title-link" itemprop="url">磁盘阵列RAID</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-11-06 16:50:10" itemprop="dateCreated datePublished" datetime="2024-11-06T16:50:10+08:00">2024-11-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-11-07 10:20:28" itemprop="dateModified" datetime="2024-11-07T10:20:28+08:00">2024-11-07</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><strong>RAID的全称是R</strong>edundant <strong>A</strong>rray of <strong>I</strong>ndependent <strong>D</strong>isks，中文译作<strong>独立硬盘冗余阵列，</strong> 简称<strong>磁盘阵列。</strong> RAID利用虚拟化存储技术把多个硬盘组合起来，成为一个或多个硬盘阵列组，目的为<strong>提升读取性能</strong>或<strong>数据备份</strong>，或是两者同时提升。</p>
+<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>RAID分为多种存储模式，亦或称<strong>多种层级</strong>，RAID层级的命名会以RAID开头并带数字，例如：RAID 0、RAID 1、RAID 10等等。每种层级在理论上均有其优缺点，要么在上述两个目的之间寻求平衡，要么为单一的目的。</p>
+<p>简单来说，RAID可以看成一块<strong>逻辑硬盘</strong>，而不去管实际的物理实现。</p>
+<h1 id="RAID-0（条带化）-RAID-1（镜像）"><a href="#RAID-0（条带化）-RAID-1（镜像）" class="headerlink" title="RAID 0（条带化）&#x2F;RAID 1（镜像）"></a>RAID 0（条带化）&#x2F;RAID 1（镜像）</h1><p><strong>RAID 0</strong>亦称为带区卷，它将两个以上的磁盘并联起来，成为一个大容量的磁盘。RAID 0模式下，数据被分成固定大小的块，分散存储在多个磁盘驱动器上，而不进行冗余备份。例如，如果有两个驱动器（驱动器0和驱动器1），数据A分为8块，其第一个部分A1存储在驱动器0上，第二个部分A2存储在驱动器1上，以此类推。这种<strong>条带化（striping）</strong> 的方式可以同时从多个驱动器读取或写入数据，从而提高系统的性能。RAID 0的优势是高速读写，但一旦其中一个磁盘故障，整个数据集将无法恢复。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/11/06/Linux-raid/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/11/01/Linux-lvm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zyming">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zero">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | zero">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/11/01/Linux-lvm/" class="post-title-link" itemprop="url">LVM磁盘空间管理</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-11-01 13:08:12" itemprop="dateCreated datePublished" datetime="2024-11-01T13:08:12+08:00">2024-11-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-11-08 09:26:54" itemprop="dateModified" datetime="2024-11-08T09:26:54+08:00">2024-11-08</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="什么是LVM，以及PV，PE，VG，LV等重要概念。"><a href="#什么是LVM，以及PV，PE，VG，LV等重要概念。" class="headerlink" title="什么是LVM，以及PV，PE，VG，LV等重要概念。"></a>什么是LVM，以及PV，PE，VG，LV等重要概念。</h1><p><strong>LVM</strong>（Logical Volume Manager）本文译作逻辑卷管理器，是一种磁盘管理技术，为操作系统提供了更为灵活的管理存储设备方式。LVM提供了如下组件：</p>
+<p><strong>物理卷</strong>（Physical Volume, PV），LVM 的基础存储设备，通常是物理硬盘、分区或 LVM 兼容的设备。</p>
+<p><strong>卷组</strong>（Volume Group, VG），由一个或多个物理卷组成的逻辑存储池。卷组中的空间可以被多个逻辑卷共享。</p>
+<p><strong>逻辑卷</strong>（Logical Volume, LV），从卷组中划分出的存储单元，类似于传统分区。逻辑卷可以格式化为文件系统并用于存储数据。</p>
+<p><strong>物理扩展</strong>（Physical Extent, PE），物理卷被划分为多个相同大小的块，这些块就是物理扩展。每个物理扩展的大小通常是 4 MB 或 8 MB，具体取决于系统配置。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/11/01/Linux-lvm/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -219,87 +392,14 @@
 <h1 id="Linux账号与群组"><a href="#Linux账号与群组" class="headerlink" title="Linux账号与群组"></a>Linux账号与群组</h1><h2 id="UID和GID"><a href="#UID和GID" class="headerlink" title="UID和GID"></a>UID和GID</h2><p>对于用户，记住Linux系统的用户名和密码足矣，然而对于Linux主机，则需要记住用户的UID（User ID）和密码。首先我们要有一个概念：<strong>Linux系统由文件组成</strong>，<strong>包括目录也是文件组成。</strong> Linux规定所有的配置文件都保存在&#x2F;etc目录下，而每个用户名和UID的对应则保存在&#x2F;etc&#x2F;passwd文件中。以前用户的密码也保存在&#x2F;etc&#x2F;passwd文件中，但是目前用户的密码在&#x2F;etc&#x2F;shadow文件中密文保存。</p>
 <p>每个用户都必须属于一个组，在未指定所属组的情况下，用户的组为自己本身。同样，组由于GID（Group ID）被Linux主机记住，组名和GID的对应保存在&#x2F;etc&#x2F;group文件中。</p>
 <p>每个Linux文件都属于用户和组，Linux系统依据&#x2F;etc&#x2F;passwd和&#x2F;etc&#x2F;group中的内容，找到UID&#x2F;GID对应的用户名和组名显示出来。因此，若随意更改&#x2F;etc&#x2F;passwd中用户的UID，会导致此用户的文件无法显示名字，并且&#x2F;home&#x2F;用户 无法登入（因为UID更改，而家目录所属UID未变）。</p>
-<h2 id="用户账号与群组"><a href="#用户账号与群组" class="headerlink" title="用户账号与群组"></a>用户账号与群组</h2><p>用户登录Linux系统，需要利用tty1~tty6终端机的login接口，并且输入用户名和密码。或者使用ssh进行远程登录。而输入用户名和密码后，Linux系统的验证流程如下：</p>
-<ol>
-<li>进入&#x2F;etc&#x2F;passwd，查找是否存在这个用户名，如果有再读出UID和GID，shell和家目录。</li>
-<li>进入&#x2F;etc&#x2F;shadow，核验用户名和密码是否对应，如果对应则用户进入到Shell界面。</li>
-</ol>
-<h3 id="etc-passwd的每一行代表了一个用户，而其中的某些为系统用户，例如bin，deamon等等。"><a href="#etc-passwd的每一行代表了一个用户，而其中的某些为系统用户，例如bin，deamon等等。" class="headerlink" title="&#x2F;etc&#x2F;passwd的每一行代表了一个用户，而其中的某些为系统用户，例如bin，deamon等等。"></a>&#x2F;etc&#x2F;passwd的每一行代表了一个用户，而其中的某些为系统用户，例如bin，deamon等等。</h3><p>而每一行的固定格式为：</p>
-<p>用户名：密码（x）：UID：GID：用户信息说明栏：家目录：Shell</p>
-<p><strong>需注意，UID为0代表用户为系统管理员，因此root的UID为0，除此之外设置其余用户的UID为0也可以做到让其变为系统管理员。</strong></p>
-<h3 id="etc-shadow的每一行存储了密码相关的字段，固定格式为："><a href="#etc-shadow的每一行存储了密码相关的字段，固定格式为：" class="headerlink" title="&#x2F;etc&#x2F;shadow的每一行存储了密码相关的字段，固定格式为："></a>&#x2F;etc&#x2F;shadow的每一行存储了密码相关的字段，固定格式为：</h3><p>用户名：密码：最近更改密码的日期：密码不可更动的天数：密码需要重新更动的天数：密码需要变更期限前的提醒天数：密码过期后的宽限天数：用户失效日期：保留字段</p>
-<p>举个例子：</p>
-<p>root:xxx:16659:5:60:7:5:16679:</p>
-<p>密码可更改的日期：16664</p>
-<p>密码提醒更改的日期：16722-16729</p>
-<p>密码更改宽限的日期：16734</p>
-<p>用户失效日期：16679</p>
-<p>其中，&#x2F;etc&#x2F;shadow中查看加密方式，$1$表示MD5加密，$5$表示SHA-256，$6$表示SHA-512。</p>
-<h3 id="etc-group的每一行代表一个群组，格式为："><a href="#etc-group的每一行代表一个群组，格式为：" class="headerlink" title="&#x2F;etc&#x2F;group的每一行代表一个群组，格式为："></a>&#x2F;etc&#x2F;group的每一行代表一个群组，格式为：</h3><p>组名：密码：GID：支持的用户名</p>
-<h3 id="账号相关文件之间的UID-GID与密码相关性示意图"><a href="#账号相关文件之间的UID-GID与密码相关性示意图" class="headerlink" title="账号相关文件之间的UID&#x2F;GID与密码相关性示意图"></a>账号相关文件之间的UID&#x2F;GID与密码相关性示意图</h3><p>​<img src="/2024/10/29/Linux-ug/img12-20241017163842-kxs91dn.png" alt="img12-20241017163842-kxs91dn">​</p>
-<h2 id="群组"><a href="#群组" class="headerlink" title="群组"></a>群组</h2><p>有效群组（effective group）：每个用户可以同属多个群组，用户的有效群组决定了新建文件的所属组。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">groups</span> [user]</span><br><span class="line"></span><br><span class="line">std输出&gt;&gt; dmtsai wheel <span class="built_in">users</span> <span class="comment">#其中，第一个群组为有效群组</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">newgrp [group] <span class="comment">#在所属群组的范围中，临时切换有效群组，退出当前shell即还原有效群组</span></span><br></pre></td></tr></table></figure>
-
-<p>初始群组（initial group）：用户一登录系统便拥有初始群组的所有权限。</p>
-<h3 id="etc-gshadow格式"><a href="#etc-gshadow格式" class="headerlink" title="&#x2F;etc&#x2F;gshadow格式"></a>&#x2F;etc&#x2F;gshadow格式</h3><p>组名：密码：群组管理员账号：群组成员</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Linux账户与群组是Linux系统权限划分的有效工具，不同角色，不同群组可以有不同的权限。</p>
-<h1 id="账号和群组管理"><a href="#账号和群组管理" class="headerlink" title="账号和群组管理"></a>账号和群组管理</h1><h2 id="新增账号"><a href="#新增账号" class="headerlink" title="新增账号"></a>新增账号</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#普通建立账号</span></span><br><span class="line">useradd [user]</span><br><span class="line"></span><br><span class="line"><span class="comment">#指定账号UID</span></span><br><span class="line">useradd -u 10250 [user]</span><br><span class="line"></span><br><span class="line"><span class="comment">#指定初始群组</span></span><br><span class="line">useradd -g [group]</span><br><span class="line"></span><br><span class="line"><span class="comment">#指定附加群组</span></span><br><span class="line">useradd -G [group]</span><br><span class="line"></span><br><span class="line"><span class="comment">#不指定家目录</span></span><br><span class="line">useradd -M [user]</span><br><span class="line"></span><br><span class="line"><span class="comment">#指定家目录</span></span><br><span class="line">useradd -d [绝对路径]</span><br><span class="line"></span><br><span class="line"><span class="comment">#指定shell</span></span><br><span class="line">useradd -s [shell]</span><br><span class="line"></span><br><span class="line"><span class="comment">#普通建立账号的默认值</span></span><br><span class="line">useradd -D</span><br><span class="line"></span><br><span class="line">std输出&gt;&gt;GROUP=100</span><br><span class="line">std输出&gt;&gt;HOME=/home</span><br><span class="line">std输出&gt;&gt;INACTIVE=-1</span><br><span class="line">std输出&gt;&gt;EXPIRE=</span><br><span class="line">std输出&gt;&gt;SHELL=/bin/bash</span><br><span class="line">std输出&gt;&gt;SKEL=/etc/skel</span><br><span class="line">std输出&gt;&gt;CREATE_MAIL_SPOOL=<span class="built_in">yes</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="etc-default-useradd"><a href="#etc-default-useradd" class="headerlink" title="&#x2F;etc&#x2F;default&#x2F;useradd"></a>&#x2F;etc&#x2F;default&#x2F;useradd</h3><p>普通建立账号的默认值可从本文件编辑，其中：</p>
-<ol>
-<li>GROUP&#x3D;100，为公共群组的GID，而RHEL、CENTOS中为私有群组，因此GID会由系统自动分配</li>
-<li>HOME&#x3D;&#x2F;home，为用户家目录的基础目录（basedir）</li>
-<li>INACTIVE&#x3D;-1，密码过期后是否会失效，过多久失效的设置</li>
-<li>EXPIRE&#x3D;，账号的失效日期</li>
-<li>SHELL&#x3D;&#x2F;bin&#x2F;bash，默认SHELL名称</li>
-<li>SKEL&#x3D;&#x2F;etc&#x2F;skel，用户家目录参考目录，新建账号时会从&#x2F;etc&#x2F;skel&#x2F;*复制到用户家目录</li>
-<li>CREATE_MAIL_SPOOL&#x3D;yes，是否建立用户的mailbox</li>
-</ol>
-<p>除了以上账号的基本设定值以外，UID&#x2F;GID和密码等其他默认参数由&#x2F;etc&#x2F;login.defs决定，此处省略对login.defs的介绍。</p>
-<p>用户建立以后，需要马上设定密码，否则无法登录：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#普通设置密码</span></span><br><span class="line">passwd [user]</span><br><span class="line"></span><br><span class="line"><span class="comment">#锁定用户</span></span><br><span class="line">passwd -l [user]</span><br><span class="line"></span><br><span class="line"><span class="comment">#解锁用户</span></span><br><span class="line">passwd -u [user]</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看用户的shadow信息</span></span><br><span class="line">passwd -S [user]</span><br><span class="line"></span><br><span class="line"><span class="comment">#管道命令明文设置密码</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;password&quot;</span> | passwd --stdin [user]</span><br></pre></td></tr></table></figure>
-
-<h3 id="更详细地显示密码参数"><a href="#更详细地显示密码参数" class="headerlink" title="更详细地显示密码参数"></a>更详细地显示密码参数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#显示详细参数</span></span><br><span class="line">chage -l [user]</span><br><span class="line"></span><br><span class="line"><span class="comment">#最近一次修改密码日期设置</span></span><br><span class="line">chage -d [YYYY-MM-DD] [user]  <span class="comment"># 若YYYY-MM-DD=0则表示用户下一次登录必须重新设置过密码</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#用户失效日期设置</span></span><br><span class="line">chage -E [YYYY-MM-DD] [user]  <span class="comment"># shadow第8个字段，无法登录</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#密码过期设置</span></span><br><span class="line">chage -I [YYYY-MM-DD] [user]  <span class="comment"># shadow第7个字段，无法使用此密码登录</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="修改账号信息"><a href="#修改账号信息" class="headerlink" title="修改账号信息"></a>修改账号信息</h2><p>方式1：通过&#x2F;etc&#x2F;passwd和&#x2F;etc&#x2F;group修改</p>
-<p>方式2：通过usermod命令修改</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">usermod -L/-U [user] <span class="comment"># 同passwd -l/-u</span></span><br><span class="line">usermod [选项] [user] <span class="comment"># 同useradd选项</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#使账号失效</span></span><br><span class="line">usermod -e 0 [user]</span><br></pre></td></tr></table></figure>
-
-<h2 id="删除账号"><a href="#删除账号" class="headerlink" title="删除账号"></a>删除账号</h2><p>用户的相关数据都会在账号被删除的时候清除，相关数据有：</p>
-<ol>
-<li>用户账号、密码数据：&#x2F;etc&#x2F;passwd，&#x2F;etc&#x2F;shadow</li>
-<li>群组数据：&#x2F;etc&#x2F;group，&#x2F;etc&#x2F;gshadow</li>
-<li>个人文件数据：&#x2F;home&#x2F;username，&#x2F;var&#x2F;spool&#x2F;mail&#x2F;username…</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#普通删除账号</span></span><br><span class="line">userdel [user]</span><br><span class="line"></span><br><span class="line"><span class="comment">#删除账号，连同家目录-r</span></span><br><span class="line">userdel -r username</span><br></pre></td></tr></table></figure>
-
-<h2 id="用户功能"><a href="#用户功能" class="headerlink" title="用户功能"></a>用户功能</h2><ol>
-<li>查看id（UID&#x2F;GID）</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">id</span> [user]</span><br></pre></td></tr></table></figure>
-
-<h2 id="增删改群组"><a href="#增删改群组" class="headerlink" title="增删改群组"></a>增删改群组</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#普通增加群组</span></span><br><span class="line">groupadd [group]</span><br><span class="line"></span><br><span class="line"><span class="comment">#增加的同时指定GID</span></span><br><span class="line">groupadd -g [GID] [group]</span><br><span class="line"></span><br><span class="line"><span class="comment">#修改GID</span></span><br><span class="line">groupmod -g [GID] [group] <span class="comment"># 此命令少用，容易造成系统资源错乱</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#修改群组名字</span></span><br><span class="line">groupmod -n [newName] [oldName]</span><br><span class="line"></span><br><span class="line"><span class="comment">#删除附件群组</span></span><br><span class="line">groupdel [group] <span class="comment"># 删除初始群组通常需要先删除用户，或者更改其GID再删除</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="成员管理"><a href="#成员管理" class="headerlink" title="成员管理"></a>成员管理</h3><ol>
-<li>gpasswd</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#给群组设置密码(root)</span></span><br><span class="line">gpasswd [group]</span><br><span class="line"></span><br><span class="line"><span class="comment">#给群组设置管理员(root)</span></span><br><span class="line">gpasswd -A [user] [group]</span><br><span class="line"></span><br><span class="line"><span class="comment">#新增成员(root)</span></span><br><span class="line">gpasswd -M [user] [group]</span><br><span class="line"></span><br><span class="line"><span class="comment">#删除密码/使密码失效(root)</span></span><br><span class="line">gpasswd -r/-R [group]</span><br><span class="line"></span><br><span class="line"><span class="comment">#新增/移除成员（Group Admin、root）</span></span><br><span class="line">gpasswd -a/-d [user] [group]</span><br></pre></td></tr></table></figure>
-
-<h3 id="改变文件所属组"><a href="#改变文件所属组" class="headerlink" title="改变文件所属组"></a>改变文件所属组</h3><ol>
-<li>chgrp</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#普通更改</span></span><br><span class="line"><span class="built_in">chgrp</span> [group] [file] <span class="comment">#group需要在/etc/group中存在</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#递归更改子目录但不包括符号链接</span></span><br><span class="line"><span class="built_in">chgrp</span> -hR [group] [file]</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>chown</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#更改属主和属组</span></span><br><span class="line"><span class="built_in">chown</span> [user]:[group] [file]</span><br><span class="line"></span><br><span class="line"><span class="comment">#递归更改属主和属组但不包括符号链接</span></span><br><span class="line"><span class="built_in">chown</span> -hR [user]:[group] [file]</span><br></pre></td></tr></table></figure>
-
-<h2 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h2><p>给出了关于账号和群组的增删查改相关的命令。</p>
-<p>‍</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/10/29/Linux-ug/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -373,115 +473,14 @@
 <p>在 Linux 系统里，我们同样也有类似的需求。比如我们想在凌晨 1 点将文件上传服务器，或者在晚上 10 点确认系统状态，等等。</p>
 <p>但我们不可能一直守在电脑前，毕竟我们也需要下班&#x2F;睡觉，还要陪对象（new一个也行）。而且即使在上班期间，如果到点了还需要人工操作，未免效率太低了。</p>
 <p>​<code>at</code>​ 命令就是为这个需求而诞生的。使用 <code>at</code>​ 命令，你可以在特定时间自动完成你所设定的任务，也可以实现自动化，非常方便快捷！</p>
-<h2 id="at安装"><a href="#at安装" class="headerlink" title="at安装"></a>at安装</h2><p>一般来讲，大部分 Linux 发行版都已经安装了 <code>at</code>​ 命令，不确定的话可以使用 <code>at -V</code>​ 命令查看，如果有版本返回，说明就可以正常使用 <code>at</code>​ 命令。</p>
-<p>at -V # 查看版本</p>
-<h2 id="atd服务启动"><a href="#atd服务启动" class="headerlink" title="atd服务启动"></a>atd服务启动</h2><p>你可以使用 <code>systemctl</code>​ 命令启用 <code>atd</code>​ 服务并将它们设置为从现在开始自动启动</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">enable</span> --now atd</span><br></pre></td></tr></table></figure>
-
-<h2 id="at命令基本用法"><a href="#at命令基本用法" class="headerlink" title="at命令基本用法"></a>at命令基本用法</h2><ul>
-<li><p>语法</p>
-<p>at [options] [time]</p>
-</li>
-<li><p>选项</p>
-<p>-f 指定包含具体指令的任务文件</p>
-<p>-q 指定新任务的队列名称</p>
-<p>-l 显示待执行任务的列表</p>
-<p>-d 删除待执行的任务</p>
-<p>-m 任务执行完后向用户发送邮件</p>
-</li>
-<li><p>time：时间格式</p>
-<p>HH:MM</p>
-<p>HH:MM YYYY-MM-DD 或者 HH:MM MM&#x2F;DD&#x2F;YYYY</p>
-<p>HH:MM[am|pm] [month] [date]</p>
-<p>HH:MM[am|pm] + number [ minutes | hours | days | weeks | months | years ]</p>
-</li>
-</ul>
-<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><ol>
-<li>echo “echo ‘hello’ &gt;&gt; &#x2F;home&#x2F;zyming&#x2F;at-test.txt” | at 3:30 am 10&#x2F;01&#x2F;2024 或者 echo “echo ‘hello’ &gt;&gt; &#x2F;home&#x2F;zyming&#x2F;at-test.txt” | at 3:30 am 2024-10-01</li>
-</ol>
-<h2 id="使用-at-命令交互性安排任务"><a href="#使用-at-命令交互性安排任务" class="headerlink" title="使用 at 命令交互性安排任务"></a>使用 at 命令交互性安排任务</h2><p>at 11:00 am</p>
-<blockquote>
-<p>echo “hello” &gt;&gt; &#x2F;home&#x2F;zyming&#x2F;at-test.txt</p>
-</blockquote>
-<p>ctrl+d退出交互环境</p>
-<h2 id="使用-at-命令安排任务"><a href="#使用-at-命令安排任务" class="headerlink" title="使用 at 命令安排任务"></a>使用 at 命令安排任务</h2><p>echo “echo ‘hello again’ &gt;&gt; &#x2F;home&#x2F;zyming&#x2F;at-test.txt” | at now + 1 minutes</p>
-<h2 id="查看-at-任务队列"><a href="#查看-at-任务队列" class="headerlink" title="查看 at 任务队列"></a>查看 at 任务队列</h2><p>at -l &lt;&#x3D;&gt; atq</p>
-<h3 id="从任务队列中删除任务"><a href="#从任务队列中删除任务" class="headerlink" title="从任务队列中删除任务"></a>从任务队列中删除任务</h3><p>atrm &lt;任务编号&gt;</p>
-<h2 id="根据at任务列表选择删除的内容"><a href="#根据at任务列表选择删除的内容" class="headerlink" title="根据at任务列表选择删除的内容"></a>根据at任务列表选择删除的内容</h2><p>atq &amp;&amp; read -p “输入待查看at任务编号：” n &amp;&amp; atrm $n</p>
-<h2 id="查看at任务内容"><a href="#查看at任务内容" class="headerlink" title="查看at任务内容"></a>查看at任务内容</h2><p>at -c &lt;任务编号&gt; | tail -n +71 | head -n -2</p>
-<p>或者</p>
-<h3 id="通过管理员权限查看-var-spool-at中保存的内容"><a href="#通过管理员权限查看-var-spool-at中保存的内容" class="headerlink" title="通过管理员权限查看 &#x2F;var&#x2F;spool&#x2F;at中保存的内容"></a>通过管理员权限查看 &#x2F;var&#x2F;spool&#x2F;at中保存的内容</h3><p>(sudo ls &#x2F;var&#x2F;spool&#x2F;at | awk ‘{print NR “：” 1}’) &amp;&amp; read -p “需要查看第几个at任务：” n &amp;&amp; sudo tail -n+71 &#x2F;var&#x2F;spool&#x2F;at&#x2F;(sudo ls &#x2F;var&#x2F;spool&#x2F;at | head -n $n | tail -n 1)| head -n -2</p>
-<h2 id="根据at任务列表选择查看的内容"><a href="#根据at任务列表选择查看的内容" class="headerlink" title="根据at任务列表选择查看的内容"></a>根据at任务列表选择查看的内容</h2><p>atq &amp;&amp; read -p “输入待查看at任务编号：” n &amp;&amp;  (at -c $n | tail -n +71 | head -n -2)</p>
-<h1 id="batch-–系统空闲时执行的后台任务"><a href="#batch-–系统空闲时执行的后台任务" class="headerlink" title="batch –系统空闲时执行的后台任务"></a>batch –系统空闲时执行的后台任务</h1><p>batch是利用at来进行指令下达的，它会在cpu的工作负载小于0.8时，马上执行用户下达的工作任务。</p>
-<ol>
-<li>uptime # 查看当前负载（load average）</li>
-<li>bc -lq &lt;&lt;&lt; “scale&#x3D;100000; 4*a(1)” &amp;</li>
-<li>bc -lq &lt;&lt;&lt; “scale&#x3D;100000; 4*a(1)” &amp; # 小于0.8，则继续增加负载</li>
-<li>uptime # 查看当前负载（load average）</li>
-<li>batch &gt; &#x2F;usr&#x2F;bin&#x2F;updatedb</li>
-<li>date; atq # 查看此时是否执行（当前时间超过计划时间）</li>
-<li>jobs &gt; kill -9 %?</li>
-<li>uptime;atq # 查看执行与否</li>
-</ol>
-<h1 id="crond-–-执行周期性命令的守护进程"><a href="#crond-–-执行周期性命令的守护进程" class="headerlink" title="crond – 执行周期性命令的守护进程"></a>crond – 执行周期性命令的守护进程</h1><h2 id="crontab安装与检查"><a href="#crontab安装与检查" class="headerlink" title="crontab安装与检查"></a>crontab安装与检查</h2><p>sudo yum list crontabs # 检查是否安装</p>
-<p>crontab -V # 查看版本</p>
-<p>sudo yum install crontab</p>
-<h2 id="crontab服务启动与关闭"><a href="#crontab服务启动与关闭" class="headerlink" title="crontab服务启动与关闭"></a>crontab服务启动与关闭</h2><p>systemctl start crond # 启动</p>
-<p>systemctl stop crond # 关闭</p>
-<p>systemctl enable crond # 开机自启</p>
-<h2 id="全局配置文件（crontab每分钟检测一次-etc-crontab和-var-spool-cron）"><a href="#全局配置文件（crontab每分钟检测一次-etc-crontab和-var-spool-cron）" class="headerlink" title="全局配置文件（crontab每分钟检测一次&#x2F;etc&#x2F;crontab和&#x2F;var&#x2F;spool&#x2F;cron）"></a>全局配置文件（crontab每分钟检测一次&#x2F;etc&#x2F;crontab和&#x2F;var&#x2F;spool&#x2F;cron）</h2><p>cron.hourly # 是每个小时执行一次的job</p>
-<p>cron.daily # 是每天执行一次的job</p>
-<p>cron.monthly # 是每月执行一次的job</p>
-<p>cron.d # 是系统自动定期需要做的任务</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/cron.d/0hourly</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Run the hourly jobs</span></span><br><span class="line">SHELL=/bin/bash</span><br><span class="line">PATH=/sbin:/bin:/usr/sbin:/usr/bin</span><br><span class="line">MAILTO=root</span><br><span class="line">01 * * * * root run-parts /etc/cron.hourly</span><br></pre></td></tr></table></figure>
-
-<p>crontab # 是设定定时任务执行文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/crontab</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">SHELL=/bin/bash</span><br><span class="line">PATH=/sbin:/bin:/usr/sbin:/usr/bin</span><br><span class="line">MAILTO=root</span><br><span class="line"></span><br><span class="line"><span class="comment"># For details see man 4 crontabs</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Example of job definition:</span></span><br><span class="line"><span class="comment"># .---------------- minute (0 - 59)</span></span><br><span class="line"><span class="comment"># |  .------------- hour (0 - 23)</span></span><br><span class="line"><span class="comment"># |  |  .---------- day of month (1 - 31)</span></span><br><span class="line"><span class="comment"># |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...</span></span><br><span class="line"><span class="comment"># |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat</span></span><br><span class="line"><span class="comment"># |  |  |  |  |</span></span><br><span class="line"><span class="comment"># *  *  *  *  * user-name  command to be executed</span></span><br></pre></td></tr></table></figure>
-
-<p>crontab.deny # 文件用于控制不让哪些用户使用crontab</p>
-<h2 id="用户配置文件"><a href="#用户配置文件" class="headerlink" title="用户配置文件"></a>用户配置文件</h2><p>每个用户都有自己的cron配置文件，通过crontab -e就可以编辑。</p>
-<p><a target="_blank" rel="noopener" href="https://crontab.guru/">时间配置测试网站</a></p>
-<p><img src="/2024/10/17/Linux-crontab/image-20240929101230-geczmu2.png" alt="image-geczmu2"></p>
-<p>星号（）：代表所有可能的值，例如month字段如果是星号，则表示在满足其它字段的制约条件后每月都执行该命令操作。<br>逗号（,）：可以用逗号隔开的值指定一个列表范围，例如，“1,2,5,7,8,9”<br>中杠（-）：可以用整数之间的中杠表示一个整数范围，例如“2-6”表示“2,3,4,5,6”<br>正斜线（&#x2F;）：可以用正斜线指定时间的间隔频率，例如“0-23&#x2F;2”表示每两小时执行一次。同时正斜线可以和星号一起使用，例如&#x2F;10，如果用在minute字段，表示每十分钟执行一次。</p>
-<h2 id="定时任务实例"><a href="#定时任务实例" class="headerlink" title="定时任务实例"></a>定时任务实例</h2><ol>
-<li><p>每月每天凌晨3点30分和中午12点30分执行test.sh脚本</p>
-<p> 30 3,12 * * * &#x2F;home&#x2F;test.sh</p>
-</li>
-<li><p>每月每天每隔6小时的每30分钟执行test.sh脚本</p>
-<p> &#x2F;30 &#x2F;6 * * * &#x2F;home&#x2F;test.sh</p>
-</li>
-<li><p>每月每天早上8点到下午18点每隔2小时的每30分钟执行test.sh脚本</p>
-<p> &#x2F;30 8-18&#x2F;2 * * * &#x2F;home&#x2F;test.sh</p>
-</li>
-<li><p>每月每天晚上21点30分执行test.sh脚本</p>
-<p> 30 21 * * * &#x2F;home&#x2F;test.sh</p>
-</li>
-<li><p>每月1号、10号、22号凌晨4点45分执行test.sh脚本</p>
-<p> 45 4 1,10,22 * * &#x2F;home&#x2F;test.sh</p>
-</li>
-</ol>
-<p><strong>注意</strong></p>
-<p> 某些时候天和星期一起设置会冲突</p>
-<h2 id="查询-删除当前用户定时任务"><a href="#查询-删除当前用户定时任务" class="headerlink" title="查询&#x2F;删除当前用户定时任务"></a>查询&#x2F;删除当前用户定时任务</h2><p>crontab -l &#x2F; crontab -r</p>
-<h1 id="可唤醒停机期间的工作任务（anacron）"><a href="#可唤醒停机期间的工作任务（anacron）" class="headerlink" title="可唤醒停机期间的工作任务（anacron）"></a>可唤醒停机期间的工作任务（anacron）</h1><ol>
-<li><p>目的</p>
-<p> anacron不是crontab的替代物，它是一个程序，针对非24小时一直启动linux系统的crontab执行，以及由于特殊原因超过预计时间没被执行的定时任务而提出</p>
-</li>
-</ol>
-<h2 id="anacron与-etc-anacrontab"><a href="#anacron与-etc-anacrontab" class="headerlink" title="anacron与&#x2F;etc&#x2F;anacrontab"></a>anacron与&#x2F;etc&#x2F;anacrontab</h2><p>anacron是一个程序，放到了&#x2F;etc&#x2F;cron.hourly，得以每个小时运行一次。</p>
-<h2 id="anacrontab的执行流程（以cron-daily为例）"><a href="#anacrontab的执行流程（以cron-daily为例）" class="headerlink" title="anacrontab的执行流程（以cron.daily为例）"></a>anacrontab的执行流程（以cron.daily为例）</h2><ol>
-<li>分析&#x2F;etc&#x2F;anacrontab，得到cron.dailly的执行周期为1天；</li>
-<li>由&#x2F;var&#x2F;spool&#x2F;cron.daily得到上次执行anacrontab的时间戳；</li>
-<li>若该时间戳与目前时间相差超过了1天，那么准备执行指令；</li>
-<li>根据&#x2F;etc&#x2F;anacrontab中设定的delay in minutes和START_HOURS_RANGE&#x3D;3-22，得出指令的运行时间应当是在当天的3:00到22:00之间，每个小时的前五分钟内随机执行，若不在此时间范围以内，则在第二天的3:00开始执行；</li>
-<li>执行完 run-parts &#x2F;etc&#x2F;cron.daily，anacrontab整个流程结束。</li>
-</ol>
-<p>总结：anacrontab每个小时去检测时间戳的差距，可以使得cron.daily中的任务每天执行一次，而由于其执行周期为1小时，因此开机后的1小时左右系统会进行一定的检测工作。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/10/17/Linux-crontab/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -553,16 +552,15 @@
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/10/16/hello-world/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -680,10 +678,14 @@
 <td>麒麟操作系统，由中国的操作系统开发团队开发，基于 Ubuntu 定制而来</td>
 </tr>
 </tbody></table>
-<h2 id="查看指令-1"><a href="#查看指令-1" class="headerlink" title="查看指令"></a>查看指令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/os-release</span><br><span class="line">或</span><br><span class="line">lsb_release -a <span class="comment"># 如果提示没有此命令，则首先sudo yum install redhat-lsb</span></span><br></pre></td></tr></table></figure>
-
-<p>‍</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/07/24/Linux-version/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
